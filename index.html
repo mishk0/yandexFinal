@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ШРИ</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="b-wrapper">
+    <header class="b-header">
+        <nav class="b-nav">
+            <ul>
+                <li class="b-nav__link" data-linkType="index"><a href="#">О ШРИ</a></li>
+                <li
+                        class="b-nav__link" data-linkType="students"><a href="#!/students">Студенты</a></li>
+                <li
+                        class="b-nav__link" data-linkType="lections"><a href="#!/lections">Лекции</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="b-wrapper__content">
+        <div class="preloader">
+            <img src="data:image/gif;base64,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"/></td>
+        </div>
+    </div>
+
+    <footer class="b-footer">
+        <span class="b-footer__copyright">&copy; Михаил Мокрушин</span>
+    </footer>
+</div>
+
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://underscorejs.org/underscore.js"></script>
+<script src="http://backbonejs.org/backbone.js"></script>
+<script src="http://documentcloud.github.io/backbone/examples/backbone.localStorage.js"></script>
+<script src="data/students-data.js"></script>
+<script src="js/script.js"></script>
+<script type="text/template" id="student">
+    <div class="b-student__avatar">
+        <img src="<%=link_photo%>" width="100" alt=""/>
+    </div>
+    <div class="b-student__info">
+        <div class="b-student__info_text">
+            <a href="#!/students/<%=id%>"><%=first_name%> <%=last_name%></a>
+        </div>
+        <div class="b-student__info_city">
+            г. <%=city%>
+        </div>
+        <ul class="b-soc-links">
+            <% if (link_vk) { %>
+            <li class="b-soc-links__vk"><a href="<%=link_vk%>" target="_blank">VK</a></li>
+            <% }
+            if (link_gihub) { %>
+            <li class="b-soc-links__git"><a href="<%=link_gihub%>" target="_blank">git</a></li>
+            <% }
+            if (link_facebook) { %>
+            <li class="b-soc-links__fb"><a href="<%=link_facebook%>" target="_blank">fb</a></li>
+            <% }
+            if (link_yaru) { %>
+            <li class="b-soc-links__ya"><a href="<%=link_yaru%>" target="_blank">yandex</a></li>
+            <% } %>
+        </ul>
+    </div>
+    <span class="close">×</span>
+</script>
+<script type="text/template" id="all-students">
+    <div class="b-page-students">
+        <h1>СТУДЕНТЫ</h1>
+
+        <div class="b-students__control">
+            -- --
+        </div>
+        <div class="b-students__list">
+
+        </div>
+    </div>
+    </div>
+</script>
+<script type="text/template" id="studentbig">
+    <div class="b-page-student-big">
+        <div class="link-to-all-student">
+            <a href="#!/students">&larr; все студенты</a>
+        </div>
+        <div class="b-page-student-big__wrapper">
+            <div class="b-page-student-big__avatar">
+                <img src="<%=link_photo%>" alt=""/>
+            </div>
+            <div class="b-page-student-big__text">
+                <h2 class="b-page-student-big__header"><%=first_name%> <%=last_name%></h2>
+
+                <div class="b-page-student-big__city">г. <%=city%></div>
+                <%=about%>
+                <ul class="b-soc-links">
+                    <% if (link_vk) { %>
+                    <li class="b-soc-links__vk"><a href="<%=link_vk%>" target="_blank">VK</a></li>
+                    <% }
+                    if (link_gihub) { %>
+                    <li class="b-soc-links__git"><a href="<%=link_gihub%>" target="_blank">git</a></li>
+                    <% }
+                    if (link_facebook) { %>
+                    <li class="b-soc-links__fb"><a href="<%=link_facebook%>" target="_blank">fb</a></li>
+                    <% }
+                    if (link_yaru) { %>
+                    <li class="b-soc-links__ya"><a href="<%=link_yaru%>" target="_blank">yandex</a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</script>
+<script type="text/template" id="index">
+    <div class="b-page-index">
+        <h1>О ШРИ</h1>
+
+        <p>Яндекс открывает набор во вторую Школу разработки интерфейсов в Москве.</p>
+
+        <p>Мы приглашаем студентов старших курсов и недавних выпускников вузов, которые хотят развиваться в области
+            фронтенд-разработки веб-сервисов. Чтобы учиться в нашей Школе, вам понадобятся базовые знания по
+            разработке интерфейсов и небольшой опыт их создания.</p>
+
+        <p>Бесплатные занятия будут проходить три раза в неделю в <a
+                href="http://company.yandex.ru/contacts/redrose/" title="московском офисе Яндекса">московском офисе
+            Яндекса</a>: <strong>во вторник и четверг — с 18:30 до 21:30, в субботу — с 12:00 до 15:00.</strong></p>
+
+        <p>Наиболее успешные выпускники Школы получат возможность пройти практику в компании.</p>
+
+        <h3>Как поступить</h3>
+
+        <p>Приём заявок на поступление закончен. По результатам теста мы пригласим в Школу 30-40 человек.</p>
+
+        <h3>Структура школы</h3>
+
+        <p><strong>Теоретический этап</strong></p>
+
+        <p>Первый этап обучения представляет собой курс лекций, посвящённых различным сторонам фронтенд-разработки.
+            С программой прошлого года вы можете ознакомиться на <a
+                    href="http://events.yandex.ru/events/shri/msk-2012/programm/">этой</a> странице.
+            Лекции начнутся 7 сентября и будут продолжаться в течение месяца. В конце курса слушателям предстоит
+            экзамен.
+            Лучшим студентам мы предложим пройти практический этап Школы. </p>
+
+        <p><strong>Практический этап</strong></p>
+
+        <p>Практика — это отличный шанс увидеть работу Яндекса изнутри. Практиканты получат корпоративные
+            компьютеры, пропуски в офис, а ещё мы будем платить им стипендию.
+            С середины октября до середины декабря практикантам предстоит выполнить большое задание под руководством
+            опытного разработчика. Также во время практики будут продолжаться лекции.</p>
+
+        <p>Тех, кто успешно пройдёт практику, мы с удовольствием пригласим к нам на работу или стажировку.</p>
+
+        <p>Все вопросы о Школе присылайте на адрес: <a href="mailto:intern@yandex-team.ru"
+                                                       title="intern@yandex-team.ru">intern@yandex-team.ru</a></p>
+    </div>
+</script>
+<script type="text/template" id="error404">
+    <div class="b-error404">
+        404
+    </div>
+</script>
+</html>

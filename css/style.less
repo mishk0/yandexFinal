@@ -1,0 +1,278 @@
+@c1 : #555456;
+@c2 : #CC344D;
+@c3 : #E3DBE7;
+@c4 : #6FBCEB;
+
+.clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.preloader {
+  width: 40px;
+  height: 36px;
+  background: #fff;
+  margin: 120px auto 0;
+  text-align: center;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding-top: 4px;
+}
+
+body {
+  line-height: 1.2;
+  font-size: 14px;
+  background: #725391;
+  color: @c1;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: @c2;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+h1 {
+  background: #FFB15C;
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  padding: 0 3px;
+  height: 40px;
+  line-height: 40px;
+  &:before {
+    content: "";
+    border: 20px solid transparent;
+    border-left: 20px solid #FFB15C;
+    position: absolute;
+    right: -40px;
+    top: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+.b-wrapper {
+  width: 990px;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+
+.b-header {
+  background: @c3;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 40px;
+  text-align: center;
+  border-bottom: 3px solid @c4;
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, .15);
+  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, .15);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .15);
+}
+
+.transition {
+  transition: all 0.1s;
+}
+
+.b-nav {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  &__link {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 2px;
+    a {
+      display: block;
+      height: 40px;
+      padding: 0 30px;
+      .transition;
+    }
+    a:hover {
+      background: @c4;
+      color: #fff;
+      border-bottom: 3px solid #5589AD;
+    }
+  }
+  &__link-active a {
+    background: @c4;
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.b-wrapper__content {
+  background: @c3;
+  margin-bottom: 10px;
+  padding: 30px;
+  min-height: 300px;
+}
+
+.b-footer {
+  margin-top: 10px;
+  text-align: center;
+  color: #fff;
+  padding-bottom: 10px;
+}
+
+.b-students__list {
+  .clearfix;
+  margin-left: -10px;
+}
+
+.b-student {
+  .clearfix;
+  .transition;
+  background: #DDD5E1;
+  border: 2px solid #DDD5E1;
+  margin-bottom: 10px;
+  float: left;
+  width: 436px;
+  margin-left: 10px;
+  padding: 10px;
+  position: relative;
+  &__avatar {
+    float: left;
+    margin-right: 10px;
+    width: 100px;
+    height: 100px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 5px solid @c4;
+    overflow: hidden;
+  }
+  &__info_text {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  &__info_city {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .close {
+    .transition;
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  &:hover {
+    border: 2px solid @c4;
+    .close {
+      display: block;
+    }
+  }
+
+}
+
+.b-soc-links {
+  .clearfix;
+  li {
+    float: left;
+    margin-right: 5px;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+  }
+}
+
+.b-soc-links__vk {
+  background: #00C6F3;
+}
+
+.b-soc-links__fb {
+  background: #FFB15C;
+}
+
+.b-soc-links__ya {
+  background: #FF4868;
+}
+
+.b-soc-links__git {
+  background: #00AAAB;
+}
+
+.link-to-all-student {
+  margin-bottom: 20px;
+}
+
+.b-page-student-big {
+  &__wrapper {
+    .clearfix;
+  }
+  &__avatar {
+    float: left;
+    width: 200px;
+    margin-right: 15px;
+    img {
+      width: 200px;
+    }
+  }
+  &__text {
+    overflow: hidden;
+  }
+  &__header {
+    margin: 0 0 5px;
+    background: #FF4868;
+    display: inline-block;
+    padding: 5px;
+    color: #fff;
+  }
+  &__city {
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+  .b-soc-links {
+    margin-top: 20px;
+  }
+}
+.b-error404 {
+  font-size: 100px;
+  text-align: center;
+  color:@c2;
+}
