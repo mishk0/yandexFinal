@@ -197,23 +197,32 @@
                 <iframe src="<%=slides_url%>" frameborder="0" width="348" height="290"></iframe>
             </div>
         </div>
+        <h3>Комментарии</h3>
         <div class="b-page-lecture__comments">
-            <h3>Комментарии</h3>
-            <div class="b-page-lecture__comments_comments-list">
-                df
-            </div>
+
+
         </div>
         <form class="b-page-lecture__commentsForm">
             <div class="b-page-lecture__commentsForm_line">
-                <label><input type="text" placeholder="введите имя"/></label>
+                <input type="text" name="name" placeholder="введите имя"/>
             </div>
             <div class="b-page-lecture__commentsForm_line">
-                <textarea cols="30" rows="10" placeholder="введите сообщение"></textarea>
+                <textarea cols="30" rows="10" name="text" placeholder="введите сообщение"></textarea>
             </div>
             <button class="b-button">
                 отправить
             </button>
         </form>
     </div>
+</script>
+<script type="text/template" id="comments">
+       <div class="b-page-lecture__comments_comments-list">
+             <%  _.each(comments, function(i){ %>
+             <div class="b-page-lecture__comments_line">
+                <%=i.name%> :
+                <%=i.message%>
+             </div>
+          <% })     %>
+       </div>
 </script>
 </html>

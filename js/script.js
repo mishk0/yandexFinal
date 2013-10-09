@@ -174,7 +174,7 @@ $(function () {
     var Lecture = Backbone.Model.extend({
         defaults: function () {
             return {
-                comments: {}
+                comments: ''
             }
         }
     });
@@ -187,23 +187,42 @@ $(function () {
 
     var LectureBigPage = Backbone.View.extend({
         el: $(".b-wrapper"),
-        templates: _.template($('#lecturebig').html()),
+        templates: {
+           "lecturebig" : _.template($('#lecturebig').html()),
+           "comments" : _.template($('#comments').html())
+        },
         events: {
           "submit .b-page-lecture__commentsForm" : "submit"
         },
         initialize: function() {
-           this.form = this.$(".b-page-lecture__commentsForm");
            this.wrapper = this.$(".b-wrapper__content");
-           this.model.on("change", this.render, this);
+           this.model.on("change:comments", this.renderComments, this);
            this.render();
 
         },
-        render: function () {
-            this.wrapper.html(this.templates(this.model.toJSON()));
+        render: function() {
+            this.wrapper.html(this.templates["lecturebig"](this.model.toJSON()));
+            this.renderComments();
+        },
+        renderComments: function() {
+            var commentObj = $.parseJSON(this.model.toJSON().comments);
+            this.wrapper.find(".b-page-lecture__comments").html(this.templates["comments"]({"comments" : commentObj}));
         },
         submit: function () {
-           var comments = this.model.get("comments");
-            debugger;
+           this.form = this.$(".b-page-lecture__commentsForm");
+            var comment = {
+               name : this.form.find("[name='name']").val() || "без имени",
+               message : this.form.find("[name='text']").val()
+           }
+            var comments = this.model.get("comments")
+            if (comments) {
+                comments = $.parseJSON(comments);
+                comments.push(comment);
+            } else {
+                comments = [comment];
+            }
+           this.model.save({"comments" : JSON.stringify(comments)});
+           return false;
         }
     })
 
