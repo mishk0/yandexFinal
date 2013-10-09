@@ -202,7 +202,9 @@ $(function () {
         },
         render: function() {
             this.wrapper.html(this.templates["lecturebig"](this.model.toJSON()));
-            this.renderComments();
+            if (this.model.get("comments")) {
+                this.renderComments();
+            }
         },
         renderComments: function() {
             var commentObj = $.parseJSON(this.model.toJSON().comments);
