@@ -10,7 +10,8 @@
     <header class="b-header">
         <nav class="b-nav">
             <ul>
-                <li class="b-nav__link" data-linkType="index"><a href="#">О ШРИ</a></li><li class="b-nav__link" data-linkType="students"><a href="#!/students">Студенты</a></li><li class="b-nav__link" data-linkType="lections"><a href="#!/lections">Лекции</a></li>
+                <li class="b-nav__link" data-linkType="index"><a href="#">О ШРИ</a></li><li class="b-nav__link"
+                                                                                            data-linkType="students"><a href="#!/students">Студенты</a></li><li class="b-nav__link" data-linkType="lectures"><a href="#!/lectures">Лекции</a></li>
             </ul>
         </nav>
     </header>
@@ -80,7 +81,7 @@
         </div>
         <div class="b-page-student-big__wrapper">
             <div class="b-page-student-big__avatar">
-                <img src="<%=link_photo%>" alt=""/>
+                <a href="<%=link_photo%>" target="_blank"><img src="<%=link_photo%>" alt=""/></a>
             </div>
             <div class="b-page-student-big__text">
                 <h2 class="b-page-student-big__header"><%=first_name%> <%=last_name%></h2>
@@ -154,5 +155,35 @@
     <div class="b-error404">
         404
     </div>
+</script>
+<script type="text/template" id="all-lectures">
+    <div class="b-page-lectures">
+        <h1>ЛЕКЦИИ</h1>
+        <div class="b-lectures__list">
+           <ol class="b-lecture">
+               <% _.each(lectures, function(i){ %>
+               <li>
+               <h3 class="b-lecture__name"><a href="#!/lectures/<%=i.id%>"><%=i.name%></a></h3>
+                   <% if (i.video_url || i.slides_url) { %>
+               <ul class="b-lecture__tags">
+                   <%if (i.video_url) {   %>
+                     <li class="video_tag">видео</li>
+                  <% }
+                   if (i.slides_url) {   %>
+                     <li class="slide_tag">слайды</li>
+                  <% }   %>
+               </ul>
+             <%  }%>
+                <div class="b-lecture__lector-name"><%=i.lector_name%></div>
+               </li>
+
+           <% }) %>
+           </ol>
+        </div>
+    </div>
+    </div>
+</script>
+<script type="text/template" id="lecture">
+    lecture
 </script>
 </html>

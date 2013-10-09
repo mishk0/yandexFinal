@@ -20,7 +20,7 @@ html, body {
   margin: 0;
 }
 
-ul, li {
+ul, ul li {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -275,4 +275,28 @@ h1 {
   font-size: 100px;
   text-align: center;
   color:@c2;
+}
+
+.b-lecture {
+  &__name {
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  &__tags {
+    display: inline-block;
+    li {
+      display: inline-block;
+      padding: 3px 5px;
+      font-size: 12px;
+      margin-left: 5px;
+      color:#fff;
+    }
+  }
+}
+
+.video_tag {
+  background: #00C6F3;
+}
+.slide_tag {
+  background: #00AAAB;
 }

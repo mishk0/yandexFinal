@@ -1,20 +1,15 @@
 $(function () {
-    var sp;
+    var sp, lp;
     var Controller = Backbone.Router.extend({
 
         routes: {
             "": "index",
-            "!/:type": "students",
-            "!/:type/": "students",
-            "!/:type/:id": "students",
+            "!/:type": "handler",
+            "!/:type/": "handler",
+            "!/:type/:id": "handler",
             "*undefined": "show404error"
         },
-        students: function (type, id) {
-            /*if (id !== undefined) {
-             app.model.set({state : "students", studentId : id});
-             } else {
-             app.model.set({state : "students", studentId : false});
-             }*/
+        handler: function (type, id) {
             if (type === "students") {
                 if (!sp) {
                     sp = new StudentsPage;
@@ -31,6 +26,12 @@ $(function () {
                     sp.render();
                 }
                 this.toggleNavStatus("students");
+            } else if (type === "lectures") {
+                if (!lp) {
+                    lp = new LecturesPage;
+                }
+                lp.render();
+                 this.toggleNavStatus("lectures");
             } else {
                 this.show404error();
             }
@@ -38,7 +39,6 @@ $(function () {
         index: function () {
             $(".b-wrapper__content").html(_.template($('#index').html()));
             this.toggleNavStatus("index");
-            //  app.model.set({state : "index", studentId : false});
         },
         toggleNavStatus: function (state) {
             $(".b-nav li").removeClass("b-nav__link-active");
@@ -46,44 +46,6 @@ $(function () {
         },
         show404error: function() {
             $(".b-wrapper__content").html(_.template($('#error404').html()));
-        }
-    });
-
-    /*App model*/
-    var App = Backbone.Model.extend({
-        defaults: function () {
-            return {
-                state: "index"
-            }
-        }
-    });
-    /*App view*/
-    var AppView = Backbone.View.extend({
-        el: $(".b-wrapper"),
-        templates: { // Шаблоны на разное состояние
-            "index": _.template($('#index').html()),
-            "students": _.template($('#all-students').html()),
-            "studentbig": _.template($('#studentbig').html())
-        },
-        initialize: function () {
-            this.model.on("change", this.render, this);
-        },
-        render: function () {
-            var newState = this.model.get("state");
-            var id = this.model.get("studentId");
-            var elem = this.$(".b-wrapper__content");
-
-            if (id && newState == "students") {
-                elem.html(this.templates["studentbig"](sc.filterId(id).toJSON()))
-            } else {
-                elem.html(this.templates[newState]);
-            }
-
-            this.toggleNavStatus(newState);
-        },
-        toggleNavStatus: function (newState) {
-            this.$(".b-nav li").removeClass("b-nav__link-active");
-            this.$("[data-linkType=" + newState + "]").addClass("b-nav__link-active");
         }
     });
 
@@ -154,7 +116,7 @@ $(function () {
             sc.on('reset', this.addAll, this);
             sc.fetch();
             if (!sc.models.length) {
-                sc.reset(modelJson);
+                sc.reset(modelJson.students);
             }
         },
         render: function () {
@@ -183,10 +145,16 @@ $(function () {
             this.wrapper.html(this.templates(this.model.toJSON()));
         }
     });
-
-
-//new StudentsPage;
-//var app = new AppView({model : new App()});
+    var LecturesPage = Backbone.View.extend({
+        el: $(".b-wrapper"),
+        templates: _.template($('#all-lectures').html()),
+        initialize: function () {
+            this.wrapper = this.$(".b-wrapper__content")
+        },
+        render: function () {
+            this.wrapper.html(this.templates({"lectures":modelJson.lectures}));
+        }
+    });
 
     var controller = new Controller();
     Backbone.history.start();

@@ -15,7 +15,7 @@ body {
 }
 
 ul,
-li {
+ul li {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -319,4 +319,29 @@ h1:before {
   font-size: 100px;
   text-align: center;
   color: #cc344d;
+}
+
+.b-lecture__name {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.b-lecture__tags {
+  display: inline-block;
+}
+
+.b-lecture__tags li {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 12px;
+  margin-left: 5px;
+  color: #fff;
+}
+
+.video_tag {
+  background: #00C6F3;
+}
+
+.slide_tag {
+  background: #00AAAB;
 }
