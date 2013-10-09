@@ -270,7 +270,7 @@ h1:before {
   background: #00AAAB;
 }
 
-.link-to-all-student {
+.link-to-all {
   margin-bottom: 20px;
 }
 
@@ -344,4 +344,30 @@ h1:before {
 
 .slide_tag {
   background: #00AAAB;
+}
+
+.b-page-lecture-big__wrapper:before,
+.b-page-lecture-big__wrapper:after {
+  content: " ";
+  display: table;
+}
+
+.b-page-lecture-big__wrapper:after {
+  clear: both;
+}
+
+.b-page-lecture-big__video {
+  float: left;
+  background: #00C6F3;
+  padding: 10px;
+}
+
+.b-page-lecture-big__slides {
+  float: right;
+  padding: 10px;
+  background: #00AAAB;
+}
+
+.b-page-lecture-big h1 {
+  margin-top: 0;
 }

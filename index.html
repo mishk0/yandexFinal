@@ -76,7 +76,7 @@
 </script>
 <script type="text/template" id="studentbig">
     <div class="b-page-student-big">
-        <div class="link-to-all-student">
+        <div class="link-to-all">
             <a href="#!/students">&larr; все студенты</a>
         </div>
         <div class="b-page-student-big__wrapper">
@@ -184,16 +184,36 @@
     </div>
 </script>
 <script type="text/template" id="lecturebig">
-    <div class="b-page-student-big">
-        <div class="link-to-all-student">
-            <a href="#!/students">&larr; все студенты</a>
+    <div class="b-page-lecture-big">
+        <div class="link-to-all">
+            <a href="#!/lectures">&larr; все лекции</a>
         </div>
-        <div class="b-page-student-big__wrapper">
-            <div class="b-page-student-big__avatar">
-                <a href="<%=link_photo%>" target="_blank"><img src="<%=link_photo%>" alt=""/></a>
+        <h1><%=name%></h1>
+        <div class="b-page-lecture-big__wrapper">
+            <div class="b-page-lecture-big__video">
+                <iframe src="<%=video_url%>" frameborder="0" width="515" height="290"></iframe>
+            </div>
+            <div class="b-page-lecture-big__slides">
+                <iframe src="<%=slides_url%>" frameborder="0" width="348" height="290"></iframe>
             </div>
         </div>
-
+        <div class="b-page-lecture__comments">
+            <h3>Комментарии</h3>
+            <div class="b-page-lecture__comments_comments-list">
+                df
+            </div>
+        </div>
+        <form class="b-page-lecture__commentsForm">
+            <div class="b-page-lecture__commentsForm_line">
+                <label><input type="text" placeholder="введите имя"/></label>
+            </div>
+            <div class="b-page-lecture__commentsForm_line">
+                <textarea cols="30" rows="10" placeholder="введите сообщение"></textarea>
+            </div>
+            <button class="b-button">
+                отправить
+            </button>
+        </form>
     </div>
 </script>
 </html>

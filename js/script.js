@@ -2,7 +2,6 @@ $(function () {
     var sp, lp;
     var collectionsMetods = {
         filterId: function (id) {
-            debugger;
             var arrElem = this.filter(function (item) {
                 return item.get('id') == id;
             })
@@ -26,7 +25,6 @@ $(function () {
             "*undefined": "show404error"
         },
         handler: function (type, id) {
-            debugger;
             if (type === "students") {
                 if (!sp) {
                     sp = new StudentsPage;
@@ -174,7 +172,11 @@ $(function () {
         }
     });
     var Lecture = Backbone.Model.extend({
-
+        defaults: function () {
+            return {
+                comments: {}
+            }
+        }
     });
     var LecturesCollection = Backbone.Collection.extend({
         model : Lecture,
@@ -187,9 +189,10 @@ $(function () {
         el: $(".b-wrapper"),
         templates: _.template($('#lecturebig').html()),
         events: {
-
+          "submit .b-page-lecture__commentsForm" : "submit"
         },
         initialize: function() {
+           this.form = this.$(".b-page-lecture__commentsForm");
            this.wrapper = this.$(".b-wrapper__content");
            this.model.on("change", this.render, this);
            this.render();
@@ -197,6 +200,10 @@ $(function () {
         },
         render: function () {
             this.wrapper.html(this.templates(this.model.toJSON()));
+        },
+        submit: function () {
+           var comments = this.model.get("comments");
+            debugger;
         }
     })
 
