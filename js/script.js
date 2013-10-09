@@ -1,5 +1,21 @@
 $(function () {
     var sp, lp;
+    var collectionsMetods = {
+        filterId: function (id) {
+            debugger;
+            var arrElem = this.filter(function (item) {
+                return item.get('id') == id;
+            })
+            if (arrElem.length === 1) {
+                return arrElem[0]
+            } else {
+                return;
+                throw new Error("ids Error");
+
+            }
+        }
+    };
+
     var Controller = Backbone.Router.extend({
 
         routes: {
@@ -10,6 +26,7 @@ $(function () {
             "*undefined": "show404error"
         },
         handler: function (type, id) {
+            debugger;
             if (type === "students") {
                 if (!sp) {
                     sp = new StudentsPage;
@@ -20,8 +37,7 @@ $(function () {
                         this.show404error();
                         return;
                     }
-                    var sbp = new StudentsBigPage({model: model});
-                    sbp.render();
+                    new StudentsBigPage({model: model});
                 } else {
                     sp.render();
                 }
@@ -30,11 +46,21 @@ $(function () {
                 if (!lp) {
                     lp = new LecturesPage;
                 }
-                lp.render();
-                 this.toggleNavStatus("lectures");
+                if (id !== undefined) {
+                   var model = lc.filterId(id);
+                    if (model === undefined) {
+                        this.show404error();
+                        return;
+                    }
+                    new LectureBigPage({model: model});
+                } else {
+                    lp.render();
+                }
+                this.toggleNavStatus("lectures");
             } else {
                 this.show404error();
             }
+
         },
         index: function () {
             $(".b-wrapper__content").html(_.template($('#index').html()));
@@ -74,7 +100,6 @@ $(function () {
         },
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
-            this.model.save();
             return this;
         },
         remove: function () {
@@ -86,21 +111,9 @@ $(function () {
     var StudentsCollection = Backbone.Collection.extend({
         model: Student,
 
-        localStorage: new Store("students-backbone"),
+        localStorage: new Store("students-backbone")
+    }).extend(collectionsMetods);
 
-        filterId: function (id) {
-            var arrElem = this.filter(function (student) {
-                return student.get('id') == id;
-            })
-            if (arrElem.length === 1) {
-                return arrElem[0]
-            } else {
-                return;
-                throw new Error("ids Error");
-
-            }
-        }
-    })
     var sc = new StudentsCollection;
 
     var StudentsPage = Backbone.View.extend({
@@ -140,6 +153,7 @@ $(function () {
         initialize: function () {
             this.wrapper = this.$(".b-wrapper__content");
             this.model.on("change", this.render, this);
+            this.render();
         },
         render: function () {
             this.wrapper.html(this.templates(this.model.toJSON()));
@@ -149,12 +163,42 @@ $(function () {
         el: $(".b-wrapper"),
         templates: _.template($('#all-lectures').html()),
         initialize: function () {
-            this.wrapper = this.$(".b-wrapper__content")
+            this.wrapper = this.$(".b-wrapper__content");
+            lc.fetch();
+            if (!lc.models.length) {
+                lc.reset(modelJson.lectures);
+            }
         },
         render: function () {
             this.wrapper.html(this.templates({"lectures":modelJson.lectures}));
         }
     });
+    var Lecture = Backbone.Model.extend({
+
+    });
+    var LecturesCollection = Backbone.Collection.extend({
+        model : Lecture,
+        localStorage: new Store("lectures-backbone")
+    }).extend(collectionsMetods);
+
+    var lc = new LecturesCollection;
+
+    var LectureBigPage = Backbone.View.extend({
+        el: $(".b-wrapper"),
+        templates: _.template($('#lecturebig').html()),
+        events: {
+
+        },
+        initialize: function() {
+           this.wrapper = this.$(".b-wrapper__content");
+           this.model.on("change", this.render, this);
+           this.render();
+
+        },
+        render: function () {
+            this.wrapper.html(this.templates(this.model.toJSON()));
+        }
+    })
 
     var controller = new Controller();
     Backbone.history.start();
