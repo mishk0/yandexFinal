@@ -69,6 +69,7 @@ h1 {
   padding: 0 3px;
   height: 40px;
   line-height: 40px;
+  margin-top: 0;
 }
 
 h1:before {
@@ -212,24 +213,17 @@ h1:before {
   margin-bottom: 10px;
 }
 
-.b-student .close {
-  -webkit-transition: all 0.1s;
-  transition: all 0.1s;
-  display: none;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
 .b-student:hover {
   border: 2px solid #6fbceb;
 }
 
 .b-student:hover .close {
   display: block;
+}
+
+.b-student__control {
+  margin-bottom: 20px;
+  float: right;
 }
 
 .b-soc-links:before,
@@ -252,6 +246,18 @@ h1:before {
   text-decoration: none;
   display: block;
   padding: 5px;
+}
+
+.close {
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .b-soc-links__vk {
@@ -378,10 +384,6 @@ h1:before {
   background: #00AAAB;
 }
 
-.b-page-lecture-big h1 {
-  margin-top: 0;
-}
-
 .b-page-lecture-big__comments_line {
   background: #DDD5E1;
   padding: 5px;
@@ -404,8 +406,7 @@ h1:before {
   margin-bottom: 10px;
 }
 
-.b-page-lecture-big__commentsForm_line input,
-.b-page-lecture-big__commentsForm_line textarea {
+.b-inp {
   width: 100%;
   resize: none;
   display: block;
@@ -417,6 +418,10 @@ h1:before {
   font-size: 16px;
 }
 
+.b-inp:focus {
+  outline: none;
+}
+
 textarea.error {
   border-color: #f00;
 }
@@ -424,9 +429,53 @@ textarea.error {
 .b-button {
   padding: 10px 20px;
   cursor: pointer;
+  display: inline-block;
   color: #fff;
   margin: 0;
   background: #00C6F3;
   font-size: 16px;
   border: none;
+}
+
+.b-dialog {
+  display: none;
+  position: fixed;
+  overflow: auto;
+  left: 0;
+  top: 0;
+  z-index: 10000;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.b-dialog-wrapper {
+  padding: 20px;
+  margin: 0 auto;
+  position: relative;
+  width: 400px;
+  background: #fff;
+}
+
+.b-dialog .close {
+  display: block;
+}
+
+.b-dialog__line {
+  margin-bottom: 10px;
+}
+
+.b-dialog__line_example {
+  font-size: 11px;
+  color: #666;
+  margin: 3px 0 0;
+}
+
+.b-dialog__label {
+  display: block;
+}
+
+.showingDialog {
+  overflow: hidden;
+  padding-right: 15px;
 }

@@ -106,6 +106,7 @@ $(function () {
             this.model.on("change", this.render, this);
         },
         render: function () {
+            debugger;
             this.$el.html(this.template(this.model.toJSON()));
             return this;
         },
@@ -134,7 +135,7 @@ $(function () {
         el: $(".b-wrapper"),
         templates: _.template($('#all-students').html()),
         events: {
-
+           "click .addStudent": "addStudent"
         },
         initialize: function () {
             this.wrapper = this.$(".b-wrapper__content")
@@ -159,6 +160,14 @@ $(function () {
         },
         addAll: function () {
             sc.each(this.addOne);
+        },
+        addStudent:function() {
+            var that = this;
+            sc.add(new Student({"first_name" : "dddd", "last_name" : "dddd", "about" : "dddd", "city" : "dddd", "id" : "11101"}));
+            debugger;
+          var d = new Dialog(function(data){
+          });
+               d.init();
         }
     });
     var StudentsBigPage = Backbone.View.extend({

@@ -26,12 +26,13 @@
     </footer>
 </div>
 
-</body>
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://underscorejs.org/underscore.js"></script>
 <script src="http://backbonejs.org/backbone.js"></script>
 <script src="http://documentcloud.github.io/backbone/examples/backbone.localStorage.js"></script>
 <script src="data/students-data.js"></script>
+<script src="js/dialog.js"></script>
 <script src="js/script.js"></script>
 <script type="text/template" id="student">
     <div class="b-student__avatar">
@@ -65,8 +66,8 @@
     <div class="b-page-students">
         <h1>СТУДЕНТЫ</h1>
 
-        <div class="b-students__control">
-            -- --
+        <div class="b-student__control">
+            <span class="b-button addStudent">+ добавить студента</span>
         </div>
         <div class="b-students__list">
 
@@ -208,10 +209,10 @@
         </div>
         <form class="b-page-lecture-big__commentsForm">
             <div class="b-page-lecture-big__commentsForm_line">
-                <input type="text" name="name" placeholder="введите имя"/>
+                <input type="text" name="name" class="b-inp" placeholder="введите имя"/>
             </div>
             <div class="b-page-lecture-big__commentsForm_line">
-                <textarea cols="30" rows="10" name="text" placeholder="введите сообщение"></textarea>
+                <textarea cols="30" rows="10" name="text" class="b-inp" placeholder="введите сообщение"></textarea>
             </div>
             <button class="b-button">
                 отправить
@@ -229,4 +230,75 @@
           <% })     %>
        </div>
 </script>
+<script type="text/template" id="dialog">
+           <div class="b-dialog-wrapper">
+               <form>
+               <div class="b-dialog__line">
+                   <label>
+                   <span class="b-dialog__label">Имя</span>
+                   <input type="text" class="b-inp" />
+                   </label>
+                   <p class="b-dialog__line_example">Иван</p>
+               </div>
+               <div class="b-dialog__line">
+                   <label>
+                   <span class="b-dialog__label">Фамилия</span>
+                   <input type="text" class="b-inp"/>
+                   </label>
+                   <p class="b-dialog__line_example">Иван</p>
+               </div>
+               <div class="b-dialog__line">
+                   <label>
+                   <span class="b-dialog__label">Город</span>
+                   <input type="text" class="b-inp" />
+                   </label>
+                   <p class="b-dialog__line_example">Иван</p>
+               </div>
+               <div class="b-dialog__line">
+                   <label>
+                   <span class="b-dialog__label">Фото</span>
+                   <input type="text" class="b-inp"/>
+                   </label>
+                   <p class="b-dialog__line_example">Иван</p>
+               </div>
+               <div class="b-dialog__line">
+                   <label>
+                   <span class="b-dialog__label">Описание</span>
+                    <textarea cols="30" rows="4" class="b-inp"></textarea>
+                   </label>
+               </div>
+               <div class="b-dialog__line">
+                   <label>
+                   <span class="b-dialog__label">Вк</span>
+                   <input type="text" class="b-inp"/>
+                   </label>
+                   <p class="b-dialog__line_example">Иван</p>
+               </div>
+               <div class="b-dialog__line">
+                   <label>
+                   <span class="b-dialog__label">Фб</span>
+                   <input type="text" class="b-inp"/>
+                   </label>
+                   <p class="b-dialog__line_example">Иван</p>
+               </div>
+               <div class="b-dialog__line">
+                   <label>
+                   <span class="b-dialog__label">Гит</span>
+                   <input type="text" class="b-inp"/>
+                   </label>
+                   <p class="b-dialog__line_example">Иван</p>
+               </div>
+               <div class="b-dialog__line">
+                   <label>
+                   <span class="b-dialog__label">Яндекс</span>
+                   <input type="text" class="b-inp"/>
+                   </label>
+                   <p class="b-dialog__line_example">Иван</p>
+               </div>
+               <button class="b-button">Добавить</button>
+               </form>
+               <span class="close">×</span>
+           </div>
+</script>
+</body>
 </html>
