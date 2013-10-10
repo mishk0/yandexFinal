@@ -1,6 +1,7 @@
-var modelJson = [
+var modelJson = {
+ "students":[
   {
-    "id":"1",
+    "id":1,
     "first_name":"Никита",
     "last_name":"Попов",
     "city":"Санкт-Петербург",
@@ -295,4 +296,119 @@ var modelJson = [
     "link_gihub":"https://github.com/mishk0",
     "link_yaru":"http://mokrushin-mikhail.ya.ru"
   }
-]
+],
+"lectures":[
+    {
+      "id":"35",
+      "lector_name":"Игорь Новак",
+      "video_url":"http://video.yandex.ru/iframe/ya-events/nvby8zm0d8.3121/?player-type=custom\u0026show-info=false\u0026show-logo=false\u0026hd=1",
+      "slides_url":"http://www.slideshare.net/slideshow/embed_code/26263503",
+      "name":"Изучение и редактирование кода "
+    },
+    {
+      "id":"36",
+      "lector_name":"Роман Андриади",
+      "video_url":"http://video.yandex.ru/iframe/ya-events/gmhj6jhjbq.7339/?player-type=custom\u0026show-info=false\u0026show-logo=false\u0026hd=1",
+      "slides_url":"http://www.slideshare.net/slideshow/embed_code/26497344",
+      "name":"Развертывание верстки"
+    },
+    {
+      "id":"37",
+      "lector_name":"Алексей Бережной",
+      "video_url":"http://video.yandex.ru/iframe/ya-events/w2b30qpu64.4923/?player-type=custom\u0026show-info=false\u0026show-logo=false\u0026hd=1",
+      "slides_url":"http://www.slideshare.net/slideshow/embed_code/26497696",
+      "name":"http-протокол"
+    },
+    {
+      "id":"38",
+      "lector_name":"Георгий Мостоловица",
+      "video_url":"http://video.yandex.ru/iframe/ya-events/sg6f9vxh4h.7140/?player-type=custom\u0026show-info=false\u0026show-logo=false\u0026hd=1",
+      "slides_url":null,
+      "name":"Механизм работы браузера"
+    },
+    {
+      "id":"39",
+      "lector_name":"Евгений Дорошенко",
+      "video_url":"http://video.yandex.ru/iframe/ya-events/0tk8ubi12b.7216/?player-type=custom\u0026show-info=false\u0026show-logo=false\u0026hd=1",
+      "slides_url":"http://www.slideshare.net/slideshow/embed_code/26501207",
+      "name":"Кеширование на клиенте и сервере"
+    },
+    {
+      "id":"40",
+      "lector_name":"Тарас Иващенко",
+      "video_url":"http://video.yandex.ru/iframe/ya-events/4fcm2v836x.2020/?player-type=custom\u0026show-info=false\u0026show-logo=false\u0026hd=1",
+      "slides_url":"http://www.slideshare.net/slideshow/embed_code/26501715",
+      "name":"Безопасность веб-приложений"
+    },
+    {
+      "id":"41",
+      "lector_name":"Алексей Бережной",
+      "video_url":"http://video.yandex.ru/iframe/ya-events/x79ax18q9w.3802/?player-type=custom\u0026show-info=false\u0026show-logo=false\u0026hd=1",
+      "slides_url":"http://www.slideshare.net/slideshow/embed_code/26502148",
+      "name":"Регулярные выражения "
+    },
+    {
+      "id":"42",
+      "lector_name":"Витя Ашик",
+      "video_url":"http://video.yandex.ru/iframe/ya-events/yc39l9dh0a.4723/?player-type=custom\u0026show-info=false\u0026show-logo=false\u0026hd=1",
+      "slides_url":"http://www.slideshare.net/slideshow/embed_code/26263542",
+      "name":"Командная строка Unix"
+    },
+    {
+      "id":"43",
+      "lector_name":"Денис Бугарчев",
+      "video_url":null,
+      "slides_url":"http://www.slideshare.net/slideshow/embed_code/26503527",
+      "name":"Архитектура веб-сервисов"
+    },
+    {
+      "id":"44",
+      "lector_name":"Денис Бугарчев",
+      "video_url":"http://video.yandex.ru/iframe/ya-events/uery0fxkg2.7247/?player-type=custom\u0026show-info=false\u0026show-logo=false\u0026hd=1",
+      "slides_url":"http://www.slideshare.net/slideshow/embed_code/26501860",
+      "name":"Языки программирования"
+    },
+    {
+      "id":"45",
+      "lector_name":"Марина Широчкина",
+      "video_url":"http://video.yandex.ru/iframe/ya-events/u7neb4ukb7.4729/?player-type=custom\u0026show-info=false\u0026show-logo=false\u0026hd=1",
+      "slides_url":"http://www.slideshare.net/slideshow/embed_code/26495249",
+      "name":"Тестирование"
+    },
+    {
+      "id":"46",
+      "lector_name":"Сергей Сергеев",
+      "video_url":"http://video.yandex.ru/iframe/ya-events/oeunffeksq.5100/?player-type=custom\u0026show-info=false\u0026show-logo=false\u0026hd=1",
+      "slides_url":null,
+      "name":"Cистемы контроля версий"
+    },
+    {
+      "id":"47",
+      "lector_name":"Сергей Черкассов",
+      "video_url":"http://video.yandex.ru/iframe/ya-events/mifh2zd4xw.7143/?player-type=custom\u0026show-info=false\u0026show-logo=false\u0026hd=1",
+      "slides_url":"http://www.slideshare.net/slideshow/embed_code/26263370",
+      "name":"Вики-синтаксис"
+    },
+    {
+      "id":"48",
+      "lector_name":"Сергей Черкассов",
+      "video_url":"http://video.yandex.ru/iframe/ya-events/hlgkkpcf67.3822/?player-type=custom\u0026show-info=false\u0026show-logo=false\u0026hd=1",
+      "slides_url":null,
+      "name":"Документирование информации"
+    },
+    {
+      "id":"49",
+      "lector_name":"Миша Трошев",
+      "video_url":"http://video.yandex.ru/iframe/ya-events/u7myq83g9q.4811/?player-type=custom\u0026show-info=false\u0026show-logo=false\u0026hd=1",
+      "slides_url":"http://www.slideshare.net/slideshow/embed_code/26263573",
+      "name":"Общий цикл разработки (dev-cycle)"
+    },
+    {
+      "id":"50",
+      "lector_name":"Анна Чеботкевич",
+      "video_url":"http://video.yandex.ru/iframe/ya-events/r29oly6fy4.4720/?player-type=custom\u0026show-info=false\u0026show-logo=false\u0026hd=1",
+      "slides_url":"http://www.slideshare.net/slideshow/embed_code/26263315",
+      "name":"Вводная по ШРИ"
+    }
+  ]
+}

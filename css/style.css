@@ -15,7 +15,7 @@ body {
 }
 
 ul,
-li {
+ul li {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -270,7 +270,7 @@ h1:before {
   background: #00AAAB;
 }
 
-.link-to-all-student {
+.link-to-all {
   margin-bottom: 20px;
 }
 
@@ -316,7 +316,117 @@ h1:before {
 }
 
 .b-error404 {
-  font-size: 100px;
+  font-size: 16px;
   text-align: center;
   color: #cc344d;
+}
+
+.b-error404 b {
+  font-size: 95px;
+  display: block;
+}
+
+.b-lecture__name {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.b-lecture__tags {
+  display: inline-block;
+}
+
+.b-lecture__tags li {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 12px;
+  margin-left: 5px;
+  color: #fff;
+}
+
+.video_tag {
+  background: #00C6F3;
+}
+
+.slide_tag {
+  background: #00AAAB;
+}
+
+.b-page-lecture-big__wrapper {
+  margin-bottom: 20px;
+}
+
+.b-page-lecture-big__wrapper:before,
+.b-page-lecture-big__wrapper:after {
+  content: " ";
+  display: table;
+}
+
+.b-page-lecture-big__wrapper:after {
+  clear: both;
+}
+
+.b-page-lecture-big__video {
+  float: left;
+  background: #00C6F3;
+  padding: 10px;
+  margin-right: 26px;
+}
+
+.b-page-lecture-big__slides {
+  float: left;
+  padding: 10px;
+  background: #00AAAB;
+}
+
+.b-page-lecture-big h1 {
+  margin-top: 0;
+}
+
+.b-page-lecture-big__comments_line {
+  background: #DDD5E1;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.b-page-lecture-big__comments_comments-list {
+  margin-bottom: 30px;
+}
+
+.b-page-lecture-big__comments-author {
+  font-weight: bold;
+}
+
+.b-page-lecture-big__comments-author:first-letter {
+  color: #f00;
+}
+
+.b-page-lecture-big__commentsForm_line {
+  margin-bottom: 10px;
+}
+
+.b-page-lecture-big__commentsForm_line input,
+.b-page-lecture-big__commentsForm_line textarea {
+  width: 100%;
+  resize: none;
+  display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  border: 3px solid #00C6F3;
+  font-size: 16px;
+}
+
+textarea.error {
+  border-color: #f00;
+}
+
+.b-button {
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #fff;
+  margin: 0;
+  background: #00C6F3;
+  font-size: 16px;
+  border: none;
 }

@@ -1,20 +1,30 @@
 $(function () {
-    var sp;
+    var sp, lp;
+    var collectionsMetods = {
+        filterId: function (id) {
+            var arrElem = this.filter(function (item) {
+                return item.get('id') == id;
+            })
+            if (arrElem.length === 1) {
+                return arrElem[0]
+            } else {
+                return;
+                throw new Error("ids Error");
+
+            }
+        }
+    };
+
     var Controller = Backbone.Router.extend({
 
         routes: {
             "": "index",
-            "!/:type": "students",
-            "!/:type/": "students",
-            "!/:type/:id": "students",
+            "!/:type": "handler",
+            "!/:type/": "handler",
+            "!/:type/:id": "handler",
             "*undefined": "show404error"
         },
-        students: function (type, id) {
-            /*if (id !== undefined) {
-             app.model.set({state : "students", studentId : id});
-             } else {
-             app.model.set({state : "students", studentId : false});
-             }*/
+        handler: function (type, id) {
             if (type === "students") {
                 if (!sp) {
                     sp = new StudentsPage;
@@ -25,20 +35,36 @@ $(function () {
                         this.show404error();
                         return;
                     }
-                    var sbp = new StudentsBigPage({model: model});
-                    sbp.render();
+                    new StudentsBigPage({model: model});
                 } else {
                     sp.render();
                 }
                 this.toggleNavStatus("students");
+            } else if (type === "lectures") {
+                if (!lp) {
+                    lp = new LecturesPage;
+                }
+                if (id !== undefined) {
+                   var model = lc.filterId(id);
+                    if (model === undefined) {
+                        this.show404error();
+                        return;
+                    }
+
+                    new LectureBigPage({model: model});
+
+                } else {
+                    lp.render();
+                }
+                this.toggleNavStatus("lectures");
             } else {
                 this.show404error();
             }
+
         },
         index: function () {
             $(".b-wrapper__content").html(_.template($('#index').html()));
             this.toggleNavStatus("index");
-            //  app.model.set({state : "index", studentId : false});
         },
         toggleNavStatus: function (state) {
             $(".b-nav li").removeClass("b-nav__link-active");
@@ -46,44 +72,6 @@ $(function () {
         },
         show404error: function() {
             $(".b-wrapper__content").html(_.template($('#error404').html()));
-        }
-    });
-
-    /*App model*/
-    var App = Backbone.Model.extend({
-        defaults: function () {
-            return {
-                state: "index"
-            }
-        }
-    });
-    /*App view*/
-    var AppView = Backbone.View.extend({
-        el: $(".b-wrapper"),
-        templates: { // Шаблоны на разное состояние
-            "index": _.template($('#index').html()),
-            "students": _.template($('#all-students').html()),
-            "studentbig": _.template($('#studentbig').html())
-        },
-        initialize: function () {
-            this.model.on("change", this.render, this);
-        },
-        render: function () {
-            var newState = this.model.get("state");
-            var id = this.model.get("studentId");
-            var elem = this.$(".b-wrapper__content");
-
-            if (id && newState == "students") {
-                elem.html(this.templates["studentbig"](sc.filterId(id).toJSON()))
-            } else {
-                elem.html(this.templates[newState]);
-            }
-
-            this.toggleNavStatus(newState);
-        },
-        toggleNavStatus: function (newState) {
-            this.$(".b-nav li").removeClass("b-nav__link-active");
-            this.$("[data-linkType=" + newState + "]").addClass("b-nav__link-active");
         }
     });
 
@@ -99,6 +87,13 @@ $(function () {
             this.destroy();
         }
     });
+    var Lecture = Backbone.Model.extend({
+        defaults: function () {
+            return {
+                comments: ''
+            }
+        }
+    });
     /*Student view*/
     var StudentView = Backbone.View.extend({
         tagName: "div",
@@ -112,7 +107,6 @@ $(function () {
         },
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
-            this.model.save();
             return this;
         },
         remove: function () {
@@ -124,22 +118,17 @@ $(function () {
     var StudentsCollection = Backbone.Collection.extend({
         model: Student,
 
-        localStorage: new Store("students-backbone"),
+        localStorage: new Store("students-backbone")
+    }).extend(collectionsMetods);
 
-        filterId: function (id) {
-            var arrElem = this.filter(function (student) {
-                return student.get('id') == id;
-            })
-            if (arrElem.length === 1) {
-                return arrElem[0]
-            } else {
-                return;
-                throw new Error("ids Error");
+    var LecturesCollection = Backbone.Collection.extend({
+        model : Lecture,
+        localStorage: new Store("lectures-backbone")
+    }).extend(collectionsMetods);
 
-            }
-        }
-    })
     var sc = new StudentsCollection;
+    var lc = new LecturesCollection;
+
 
     var StudentsPage = Backbone.View.extend({
         el: $(".b-wrapper"),
@@ -154,7 +143,10 @@ $(function () {
             sc.on('reset', this.addAll, this);
             sc.fetch();
             if (!sc.models.length) {
-                sc.reset(modelJson);
+                sc.reset(modelJson.students);
+                _.each(sc.models, function(i){         // todo optimize
+                    i.save();
+                })
             }
         },
         render: function () {
@@ -178,6 +170,7 @@ $(function () {
         initialize: function () {
             this.wrapper = this.$(".b-wrapper__content");
             this.model.on("change", this.render, this);
+            this.render();
         },
         render: function () {
             this.wrapper.html(this.templates(this.model.toJSON()));
@@ -185,8 +178,73 @@ $(function () {
     });
 
 
-//new StudentsPage;
-//var app = new AppView({model : new App()});
+    var LecturesPage = Backbone.View.extend({
+        el: $(".b-wrapper"),
+        templates: _.template($('#all-lectures').html()),
+        initialize: function () {
+            this.wrapper = this.$(".b-wrapper__content");
+            lc.fetch();
+            if (!lc.models.length) {
+                lc.reset(modelJson.lectures);
+                _.each(lc.models, function(i){         // todo optimize
+                    i.save();
+                })
+            }
+        },
+        render: function () {
+            this.wrapper.html(this.templates({"lectures":modelJson.lectures}));
+        }
+    });
+    var LectureBigPage = Backbone.View.extend({
+        el: $(".b-wrapper"),
+        templates: {
+           "lecturebig" : _.template($('#lecturebig').html()),
+           "comments" : _.template($('#comments').html())
+        },
+        events: {
+          "submit .b-page-lecture-big__commentsForm" : "submit"
+        },
+        initialize: function() {
+           this.wrapper = this.$(".b-wrapper__content");
+           this.model.on("change:comments", this.renderComments, this);
+           this.render();
+
+        },
+        render: function() {
+            this.wrapper.html(this.templates["lecturebig"](this.model.toJSON()));
+            if (this.model.get("comments")) {
+                this.renderComments();
+            }
+        },
+        renderComments: function() {
+            var commentObj = $.parseJSON(this.model.toJSON().comments);
+            this.wrapper.find(".b-page-lecture-big__comments").html(this.templates["comments"]({"comments" : commentObj}));
+        },
+        submit: function () {
+           this.form = this.$(".b-page-lecture-big__commentsForm");
+            var textarea = this.form.find("[name='text']");
+            var inp = this.form.find("[name='name']");
+            if (!textarea.val()) {
+               textarea.addClass("error");
+                return false;
+            }
+            var comment = {
+               name : _.escape(inp.val() || "без имени"),
+               message : _.escape(textarea.val())
+           }
+            var comments = this.model.get("comments")
+            if (comments) {
+                comments = $.parseJSON(comments);
+                comments.push(comment);
+            } else {
+                comments = [comment];
+            }
+           this.model.save({"comments" : JSON.stringify(comments)});
+           textarea.removeClass("error").val("");
+           inp.val("");
+           return false;
+        }
+    })
 
     var controller = new Controller();
     Backbone.history.start();
