@@ -50,7 +50,9 @@ $(function () {
                         this.show404error();
                         return;
                     }
+
                     new LectureBigPage({model: model});
+
                 } else {
                     lp.render();
                 }
@@ -85,6 +87,13 @@ $(function () {
             this.destroy();
         }
     });
+    var Lecture = Backbone.Model.extend({
+        defaults: function () {
+            return {
+                comments: ''
+            }
+        }
+    });
     /*Student view*/
     var StudentView = Backbone.View.extend({
         tagName: "div",
@@ -112,7 +121,14 @@ $(function () {
         localStorage: new Store("students-backbone")
     }).extend(collectionsMetods);
 
+    var LecturesCollection = Backbone.Collection.extend({
+        model : Lecture,
+        localStorage: new Store("lectures-backbone")
+    }).extend(collectionsMetods);
+
     var sc = new StudentsCollection;
+    var lc = new LecturesCollection;
+
 
     var StudentsPage = Backbone.View.extend({
         el: $(".b-wrapper"),
@@ -128,6 +144,9 @@ $(function () {
             sc.fetch();
             if (!sc.models.length) {
                 sc.reset(modelJson.students);
+                _.each(sc.models, function(i){         // todo optimize
+                    i.save();
+                })
             }
         },
         render: function () {
@@ -157,6 +176,8 @@ $(function () {
             this.wrapper.html(this.templates(this.model.toJSON()));
         }
     });
+
+
     var LecturesPage = Backbone.View.extend({
         el: $(".b-wrapper"),
         templates: _.template($('#all-lectures').html()),
@@ -165,26 +186,15 @@ $(function () {
             lc.fetch();
             if (!lc.models.length) {
                 lc.reset(modelJson.lectures);
+                _.each(lc.models, function(i){         // todo optimize
+                    i.save();
+                })
             }
         },
         render: function () {
             this.wrapper.html(this.templates({"lectures":modelJson.lectures}));
         }
     });
-    var Lecture = Backbone.Model.extend({
-        defaults: function () {
-            return {
-                comments: ''
-            }
-        }
-    });
-    var LecturesCollection = Backbone.Collection.extend({
-        model : Lecture,
-        localStorage: new Store("lectures-backbone")
-    }).extend(collectionsMetods);
-
-    var lc = new LecturesCollection;
-
     var LectureBigPage = Backbone.View.extend({
         el: $(".b-wrapper"),
         templates: {
@@ -192,7 +202,7 @@ $(function () {
            "comments" : _.template($('#comments').html())
         },
         events: {
-          "submit .b-page-lecture__commentsForm" : "submit"
+          "submit .b-page-lecture-big__commentsForm" : "submit"
         },
         initialize: function() {
            this.wrapper = this.$(".b-wrapper__content");
@@ -208,13 +218,19 @@ $(function () {
         },
         renderComments: function() {
             var commentObj = $.parseJSON(this.model.toJSON().comments);
-            this.wrapper.find(".b-page-lecture__comments").html(this.templates["comments"]({"comments" : commentObj}));
+            this.wrapper.find(".b-page-lecture-big__comments").html(this.templates["comments"]({"comments" : commentObj}));
         },
         submit: function () {
-           this.form = this.$(".b-page-lecture__commentsForm");
+           this.form = this.$(".b-page-lecture-big__commentsForm");
+            var textarea = this.form.find("[name='text']");
+            var inp = this.form.find("[name='name']");
+            if (!textarea.val()) {
+               textarea.addClass("error");
+                return false;
+            }
             var comment = {
-               name : this.form.find("[name='name']").val() || "без имени",
-               message : this.form.find("[name='text']").val()
+               name : _.escape(inp.val() || "без имени"),
+               message : _.escape(textarea.val())
            }
             var comments = this.model.get("comments")
             if (comments) {
@@ -224,6 +240,8 @@ $(function () {
                 comments = [comment];
             }
            this.model.save({"comments" : JSON.stringify(comments)});
+           textarea.removeClass("error").val("");
+           inp.val("");
            return false;
         }
     })

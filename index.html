@@ -153,7 +153,9 @@
 </script>
 <script type="text/template" id="error404">
     <div class="b-error404">
-        404
+                <b>404</b>
+        страница не найдена <br>
+        <a href="#">перейти на главную</a>
     </div>
 </script>
 <script type="text/template" id="all-lectures">
@@ -190,23 +192,25 @@
         </div>
         <h1><%=name%></h1>
         <div class="b-page-lecture-big__wrapper">
+            <%if (video_url) {   %>
             <div class="b-page-lecture-big__video">
                 <iframe src="<%=video_url%>" frameborder="0" width="515" height="290"></iframe>
             </div>
+             <% }
+                if (slides_url) {%>
             <div class="b-page-lecture-big__slides">
                 <iframe src="<%=slides_url%>" frameborder="0" width="348" height="290"></iframe>
             </div>
+            <% } %>
         </div>
         <h3>Комментарии</h3>
-        <div class="b-page-lecture__comments">
-
-
+        <div class="b-page-lecture-big__comments">
         </div>
-        <form class="b-page-lecture__commentsForm">
-            <div class="b-page-lecture__commentsForm_line">
+        <form class="b-page-lecture-big__commentsForm">
+            <div class="b-page-lecture-big__commentsForm_line">
                 <input type="text" name="name" placeholder="введите имя"/>
             </div>
-            <div class="b-page-lecture__commentsForm_line">
+            <div class="b-page-lecture-big__commentsForm_line">
                 <textarea cols="30" rows="10" name="text" placeholder="введите сообщение"></textarea>
             </div>
             <button class="b-button">
@@ -216,10 +220,10 @@
     </div>
 </script>
 <script type="text/template" id="comments">
-       <div class="b-page-lecture__comments_comments-list">
+       <div class="b-page-lecture-big__comments_comments-list">
              <%  _.each(comments, function(i){ %>
-             <div class="b-page-lecture__comments_line">
-                <%=i.name%> :
+             <div class="b-page-lecture-big__comments_line">
+                <div class="b-page-lecture-big__comments-author"><%=i.name%></div>
                 <%=i.message%>
              </div>
           <% })     %>
