@@ -27,19 +27,26 @@ $(function () {
             var that = this;
             this.callback = callback;
             this.el.html(that.tmpl(data));
-            $("body").addClass("showingDialog");
             this.el.fadeIn();
         },
         hide: function () {
-            $("body").removeClass("showingDialog");
             this.el.fadeOut();
         },
         submit: function () {
+            var dataForm = this.el.find("form").serializeArray();
+            var dataJSON = {};
+            _.each(dataForm, function(i){
+                if (i["value"]) {
+                dataJSON[i["name"]] = _.escape(i["value"]);
+                }
+            });
+            debugger;
+               dataJSON["id"] = setStId();
             if (this.callback) {
-                this.callback();
+                this.callback(dataJSON);
             }
             this.hide();
-
+            return false;
         }
 
     }

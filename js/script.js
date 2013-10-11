@@ -84,7 +84,15 @@ $(function () {
         defaults: function () {
             return {
                 first_name: "noname",
-                link_photo: "i/blank-user.gif"
+                last_name: "",
+                city: "Москва",
+                about: "",
+                link_photo: "i/blank-user.gif",
+                link_vk: "",
+                link_facebook: "",
+                link_gihub: "",
+                link_yaru: ""
+
             }
         },
         clear: function () {
@@ -152,6 +160,7 @@ $(function () {
                     i.save();
                 })
             }
+            window.setStId = setStudentsIds();
         },
         render: function () {
             this.wrapper.html(this.templates);
@@ -167,6 +176,7 @@ $(function () {
         addStudent:function() {
             var that = this;
             dialog.show(function(data){
+                debugger;
                 var model = new Student(data);
                 sc.add(model);
                 model.save();
@@ -262,3 +272,16 @@ $(function () {
     Backbone.history.start();
 
 })
+
+function setStudentsIds() {
+    if (localStorage["students-backbone"]) {
+      var maxLocal = localStorage["students-backbone"].split(",");
+    }
+   var maxLocalInt = [];
+    _.each(maxLocal , function(i,v){maxLocalInt.push(+i)});
+var id = _.max(maxLocalInt);
+
+      return function(){
+        return id += 1;
+      }
+};
