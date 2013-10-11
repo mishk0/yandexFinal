@@ -25,6 +25,7 @@ $(function () {
         },
         show: function (callback, data) {
             var that = this;
+            debugger;
             this.callback = callback;
             this.el.html(that.tmpl(data));
             this.el.fadeIn();
@@ -40,8 +41,9 @@ $(function () {
                 dataJSON[i["name"]] = _.escape(i["value"]);
                 }
             });
-            debugger;
-               dataJSON["id"] = setStId();
+             if (!dataJSON["id"]) {
+                 dataJSON["id"] = setStId();
+             }
             if (this.callback) {
                 this.callback(dataJSON);
             }

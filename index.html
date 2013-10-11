@@ -79,6 +79,9 @@
 </script>
 <script type="text/template" id="studentbig">
     <div class="b-page-student-big">
+        <div class="b-student__control">
+            <span class="b-button editStudent">Править</span>
+        </div>
         <div class="link-to-all">
             <a href="#!/students">&larr; все студенты</a>
         </div>
@@ -243,7 +246,7 @@
                     <div class="b-dialog__line">
                         <label>
                             <span class="b-dialog__label">Имя</span>
-                            <input type="text" name="first_name" class="b-inp"/>
+                            <input type="text" name="first_name" value="<%=first_name%>" class="b-inp"/>
                         </label>
                     </div>
                 </div>
@@ -251,7 +254,7 @@
                     <div class="b-dialog__line">
                         <label>
                             <span class="b-dialog__label">Фамилия</span>
-                            <input type="text" name="last_name" class="b-inp"/>
+                            <input type="text" name="last_name" value="<%=last_name%>" class="b-inp"/>
                         </label>
                     </div>
                 </div>
@@ -260,13 +263,13 @@
             <div class="b-dialog__line">
                 <label>
                     <span class="b-dialog__label">Город</span>
-                    <input type="text" name="city" class="b-inp"/>
+                    <input type="text" name="city" value="<%=city%>" class="b-inp"/>
                 </label>
             </div>
             <div class="b-dialog__line">
                 <label>
                     <span class="b-dialog__label">Фото</span>
-                    <input type="text" name="link_photo" class="b-inp"/>
+                    <input type="text" name="link_photo" value="<%=link_photo%>" class="b-inp"/>
                 </label>
 
                 <p class="b-dialog__line_example">Иван</p>
@@ -274,7 +277,7 @@
             <div class="b-dialog__line">
                 <label>
                     <span class="b-dialog__label">Описание</span>
-                    <textarea cols="30" rows="4" name="about" class="b-inp"></textarea>
+                    <textarea cols="30" rows="4" name="about" class="b-inp"><%=about%></textarea>
                 </label>
             </div>
             <div class="b-dialog__twocols">
@@ -282,7 +285,7 @@
                     <div class="b-dialog__line">
                         <label>
                             <span class="b-dialog__label">ВКонтакте</span>
-                            <input type="text" name="link_vk" class="b-inp"/>
+                            <input type="text" name="link_vk" value="<%=link_vk%>" class="b-inp"/>
                         </label>
                     </div>
                 </div>
@@ -290,7 +293,7 @@
                     <div class="b-dialog__line">
                         <label>
                             <span class="b-dialog__label">Github</span>
-                            <input type="text" name="link_gihub" class="b-inp"/>
+                            <input type="text" name="link_gihub" value="<%=link_gihub%>" class="b-inp"/>
                         </label>
                     </div>
                 </div>
@@ -300,7 +303,7 @@
                     <div class="b-dialog__line">
                         <label>
                             <span class="b-dialog__label">Yandex</span>
-                            <input type="text"name="link_yaru" class="b-inp"/>
+                            <input type="text"name="link_yaru" value="<%=link_yaru%>" class="b-inp"/>
                         </label>
                     </div>
                 </div>
@@ -308,10 +311,11 @@
                     <div class="b-dialog__line">
                         <label>
                             <span class="b-dialog__label">Facebook</span>
-                            <input type="text" name="link_facebook" class="b-inp"/>
+                            <input type="text" name="link_facebook" value="<%=link_facebook%>" class="b-inp"/>
                         </label>
                     </div>
                 </div>
+                <input type="hidden" name="id" value="<%=id%>" />
             </div>
             <button class="b-button">Добавить</button>
         </form>

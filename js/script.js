@@ -1,5 +1,5 @@
 $(function () {
-    var sp, lp, lbp;
+    var sp, lp, lbp, sbp;
     var collectionsMetods = {
         filterId: function (id) {
             var arrElem = this.filter(function (item) {
@@ -34,7 +34,13 @@ $(function () {
                         this.show404error();
                         return;
                     }
-                    new StudentsBigPage({model: model});
+                    if (!sbp) {
+                        sbp = new StudentsBigPage({model: model});
+                    } else {
+                        sbp.model = model;
+                        sbp.initialize();
+                    }
+
                 } else {
                     sp.render();
                 }
@@ -174,12 +180,22 @@ $(function () {
             sc.each(this.addOne);
         },
         addStudent:function() {
-            var that = this;
+            debugger;
             dialog.show(function(data){
-                debugger;
                 var model = new Student(data);
                 sc.add(model);
                 model.save();
+            }, {
+                first_name: "",
+                last_name: "",
+                city: "",
+                about: "",
+                link_photo: "",
+                link_vk: "",
+                link_facebook: "",
+                link_gihub: "",
+                link_yaru: "",
+                id: ""
             });
         }
     });
@@ -187,7 +203,7 @@ $(function () {
         el: $(".b-wrapper"),
         templates: _.template($('#studentbig').html()),
         events: {
-
+           "click .editStudent": "editStudent"
         },
         initialize: function () {
             this.wrapper = this.$(".b-wrapper__content");
@@ -196,6 +212,13 @@ $(function () {
         },
         render: function () {
             this.wrapper.html(this.templates(this.model.toJSON()));
+        },
+        editStudent: function() {
+            var that = this;
+            dialog.show(function(data){
+                that.model.set(data)
+                that.model.save();
+            }, this.model.toJSON());
         }
     });
 
