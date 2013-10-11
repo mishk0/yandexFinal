@@ -457,6 +457,26 @@ textarea.error {
   background: #fff;
 }
 
+.b-dialog__twocols {
+  margin-left: -20px;
+}
+
+.b-dialog__twocols:before,
+.b-dialog__twocols:after {
+  content: " ";
+  display: table;
+}
+
+.b-dialog__twocols:after {
+  clear: both;
+}
+
+.b-dialog__col {
+  float: left;
+  width: 190px;
+  margin-left: 20px;
+}
+
 .b-dialog .close {
   display: block;
 }
@@ -473,9 +493,4 @@ textarea.error {
 
 .b-dialog__label {
   display: block;
-}
-
-.showingDialog {
-  overflow: hidden;
-  padding-right: 15px;
 }

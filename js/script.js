@@ -1,5 +1,5 @@
 $(function () {
-    var sp, lp;
+    var sp, lp, lbp, sbp;
     var collectionsMetods = {
         filterId: function (id) {
             var arrElem = this.filter(function (item) {
@@ -19,8 +19,7 @@ $(function () {
 
         routes: {
             "": "index",
-            "!/:type": "handler",
-            "!/:type/": "handler",
+            "!/:type(/)": "handler",
             "!/:type/:id": "handler",
             "*undefined": "show404error"
         },
@@ -35,7 +34,13 @@ $(function () {
                         this.show404error();
                         return;
                     }
-                    new StudentsBigPage({model: model});
+                    if (!sbp) {
+                        sbp = new StudentsBigPage({model: model});
+                    } else {
+                        sbp.model = model;
+                        sbp.initialize();
+                    }
+
                 } else {
                     sp.render();
                 }
@@ -50,8 +55,13 @@ $(function () {
                         this.show404error();
                         return;
                     }
+                    if (!lbp) {
+                        lbp = new LectureBigPage({model: model});
+                    } else {
+                        lbp.model = model;
+                        lbp.initialize();
+                    }
 
-                    new LectureBigPage({model: model});
 
                 } else {
                     lp.render();
@@ -80,9 +90,30 @@ $(function () {
         defaults: function () {
             return {
                 first_name: "noname",
-                link_photo: "i/blank-user.gif"
+                last_name: "",
+                city: "Москва",
+                about: "",
+                link_photo: "i/blank-user.gif",
+                link_vk: "",
+                link_facebook: "",
+                link_gihub: "",
+                link_yaru: ""
+
             }
         },
+        initialize: function() {
+            if (!this.get("first_name")) {
+            this.set({"first_name": this.defaults.first_name});
+            }
+        },
+        validate: function(attrs) {
+            if (!attrs.first_name) {
+              this.set({"first_name": this.defaults.first_name});
+            }
+            if (!attrs.link_photo) {
+              this.set({"link_photo": this.defaults.link_photo});
+            }
+  },
         clear: function () {
             this.destroy();
         }
@@ -106,7 +137,6 @@ $(function () {
             this.model.on("change", this.render, this);
         },
         render: function () {
-            debugger;
             this.$el.html(this.template(this.model.toJSON()));
             return this;
         },
@@ -149,6 +179,7 @@ $(function () {
                     i.save();
                 })
             }
+            window.setStId = setStudentsIds();
         },
         render: function () {
             this.wrapper.html(this.templates);
@@ -162,19 +193,29 @@ $(function () {
             sc.each(this.addOne);
         },
         addStudent:function() {
-            var that = this;
-            sc.add(new Student({"first_name" : "dddd", "last_name" : "dddd", "about" : "dddd", "city" : "dddd", "id" : "11101"}));
-            debugger;
-          var d = new Dialog(function(data){
-          });
-               d.init();
+            dialog.show(function(data){
+                var model = new Student(data);
+                sc.add(model);
+                model.save();
+            }, {
+                first_name: "",
+                last_name: "",
+                city: "",
+                about: "",
+                link_photo: "",
+                link_vk: "",
+                link_facebook: "",
+                link_gihub: "",
+                link_yaru: "",
+                id: ""
+            });
         }
     });
     var StudentsBigPage = Backbone.View.extend({
         el: $(".b-wrapper"),
         templates: _.template($('#studentbig').html()),
         events: {
-
+           "click .editStudent": "editStudent"
         },
         initialize: function () {
             this.wrapper = this.$(".b-wrapper__content");
@@ -183,6 +224,13 @@ $(function () {
         },
         render: function () {
             this.wrapper.html(this.templates(this.model.toJSON()));
+        },
+        editStudent: function() {
+            var that = this;
+            dialog.show(function(data){
+                that.model.set(data)
+                that.model.save();
+            }, this.model.toJSON());
         }
     });
 
@@ -201,7 +249,7 @@ $(function () {
             }
         },
         render: function () {
-            this.wrapper.html(this.templates({"lectures":modelJson.lectures}));
+            this.wrapper.html(this.templates({"lectures":lc.toJSON()}));
         }
     });
     var LectureBigPage = Backbone.View.extend({
@@ -259,3 +307,16 @@ $(function () {
     Backbone.history.start();
 
 })
+
+function setStudentsIds() {
+    if (localStorage["students-backbone"]) {
+      var maxLocal = localStorage["students-backbone"].split(",");
+    }
+   var maxLocalInt = [];
+    _.each(maxLocal , function(i,v){maxLocalInt.push(+i)});
+var id = _.max(maxLocalInt);
+
+      return function(){
+        return id += 1;
+      }
+};
