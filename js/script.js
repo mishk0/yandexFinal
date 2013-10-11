@@ -1,5 +1,5 @@
 $(function () {
-    var sp, lp;
+    var sp, lp, lbp;
     var collectionsMetods = {
         filterId: function (id) {
             var arrElem = this.filter(function (item) {
@@ -19,8 +19,7 @@ $(function () {
 
         routes: {
             "": "index",
-            "!/:type": "handler",
-            "!/:type/": "handler",
+            "!/:type(/)": "handler",
             "!/:type/:id": "handler",
             "*undefined": "show404error"
         },
@@ -50,8 +49,13 @@ $(function () {
                         this.show404error();
                         return;
                     }
+                    if (!lbp) {
+                        lbp = new LectureBigPage({model: model});
+                    } else {
+                        lbp.model = model;
+                        lbp.initialize();
+                    }
 
-                    new LectureBigPage({model: model});
 
                 } else {
                     lp.render();
@@ -106,7 +110,6 @@ $(function () {
             this.model.on("change", this.render, this);
         },
         render: function () {
-            debugger;
             this.$el.html(this.template(this.model.toJSON()));
             return this;
         },
@@ -163,11 +166,11 @@ $(function () {
         },
         addStudent:function() {
             var that = this;
-            sc.add(new Student({"first_name" : "dddd", "last_name" : "dddd", "about" : "dddd", "city" : "dddd", "id" : "11101"}));
-            debugger;
-          var d = new Dialog(function(data){
-          });
-               d.init();
+            dialog.show(function(data){
+                var model = new Student(data);
+                sc.add(model);
+                model.save();
+            });
         }
     });
     var StudentsBigPage = Backbone.View.extend({
@@ -201,7 +204,7 @@ $(function () {
             }
         },
         render: function () {
-            this.wrapper.html(this.templates({"lectures":modelJson.lectures}));
+            this.wrapper.html(this.templates({"lectures":lc.toJSON()}));
         }
     });
     var LectureBigPage = Backbone.View.extend({

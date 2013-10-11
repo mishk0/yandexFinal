@@ -384,7 +384,17 @@ textarea.error {
     position: relative;
   width: 400px;
   background: #fff;
+
 }
+  &__twocols {
+    .clearfix();
+    margin-left: -20px;
+  }
+  &__col {
+      float: left;
+      width: 190px;
+      margin-left: 20px;
+    }
   .close {
     display: block;
   }
@@ -399,9 +409,4 @@ textarea.error {
   &__label {
     display: block;
   }
-}
-
-.showingDialog {
-  overflow: hidden;
-  padding-right: 15px;
 }

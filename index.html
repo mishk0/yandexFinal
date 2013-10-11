@@ -10,8 +10,10 @@
     <header class="b-header">
         <nav class="b-nav">
             <ul>
-                <li class="b-nav__link" data-linkType="index"><a href="#">О ШРИ</a></li><li class="b-nav__link"
-                                                                                            data-linkType="students"><a href="#!/students">Студенты</a></li><li class="b-nav__link" data-linkType="lectures"><a href="#!/lectures">Лекции</a></li>
+                <li class="b-nav__link" data-linkType="index"><a href="#">О ШРИ</a></li>
+                <li class="b-nav__link"
+                    data-linkType="students"><a href="#!/students">Студенты</a></li>
+                <li class="b-nav__link" data-linkType="lectures"><a href="#!/lectures">Лекции</a></li>
             </ul>
         </nav>
     </header>
@@ -154,7 +156,7 @@
 </script>
 <script type="text/template" id="error404">
     <div class="b-error404">
-                <b>404</b>
+        <b>404</b>
         страница не найдена <br>
         <a href="#">перейти на главную</a>
     </div>
@@ -162,26 +164,27 @@
 <script type="text/template" id="all-lectures">
     <div class="b-page-lectures">
         <h1>ЛЕКЦИИ</h1>
-        <div class="b-lectures__list">
-           <ol class="b-lecture">
-               <% _.each(lectures, function(i){ %>
-               <li>
-               <h3 class="b-lecture__name"><a href="#!/lectures/<%=i.id%>"><%=i.name%></a></h3>
-                   <% if (i.video_url || i.slides_url) { %>
-               <ul class="b-lecture__tags">
-                   <%if (i.video_url) {   %>
-                     <li class="video_tag">видео</li>
-                  <% }
-                   if (i.slides_url) {   %>
-                     <li class="slide_tag">слайды</li>
-                  <% }   %>
-               </ul>
-             <%  }%>
-                <div class="b-lecture__lector-name"><%=i.lector_name%></div>
-               </li>
 
-           <% }) %>
-           </ol>
+        <div class="b-lectures__list">
+            <ol class="b-lecture">
+                <% _.each(lectures, function(i){ %>
+                <li>
+                    <h3 class="b-lecture__name"><a href="#!/lectures/<%=i.id%>"><%=i.name%></a></h3>
+                    <% if (i.video_url || i.slides_url) { %>
+                    <ul class="b-lecture__tags">
+                        <%if (i.video_url) { %>
+                        <li class="video_tag">видео</li>
+                        <% }
+                        if (i.slides_url) { %>
+                        <li class="slide_tag">слайды</li>
+                        <% } %>
+                    </ul>
+                    <% }%>
+                    <div class="b-lecture__lector-name"><%=i.lector_name%></div>
+                </li>
+
+                <% }) %>
+            </ol>
         </div>
     </div>
     </div>
@@ -192,19 +195,21 @@
             <a href="#!/lectures">&larr; все лекции</a>
         </div>
         <h1><%=name%></h1>
+
         <div class="b-page-lecture-big__wrapper">
-            <%if (video_url) {   %>
+            <%if (video_url) { %>
             <div class="b-page-lecture-big__video">
                 <iframe src="<%=video_url%>" frameborder="0" width="515" height="290"></iframe>
             </div>
-             <% }
-                if (slides_url) {%>
+            <% }
+            if (slides_url) {%>
             <div class="b-page-lecture-big__slides">
                 <iframe src="<%=slides_url%>" frameborder="0" width="348" height="290"></iframe>
             </div>
             <% } %>
         </div>
         <h3>Комментарии</h3>
+
         <div class="b-page-lecture-big__comments">
         </div>
         <form class="b-page-lecture-big__commentsForm">
@@ -221,84 +226,97 @@
     </div>
 </script>
 <script type="text/template" id="comments">
-       <div class="b-page-lecture-big__comments_comments-list">
-             <%  _.each(comments, function(i){ %>
-             <div class="b-page-lecture-big__comments_line">
-                <div class="b-page-lecture-big__comments-author"><%=i.name%></div>
-                <%=i.message%>
-             </div>
-          <% })     %>
-       </div>
+    <div class="b-page-lecture-big__comments_comments-list">
+        <% _.each(comments, function(i){ %>
+        <div class="b-page-lecture-big__comments_line">
+            <div class="b-page-lecture-big__comments-author"><%=i.name%></div>
+            <%=i.message%>
+        </div>
+        <% }) %>
+    </div>
 </script>
 <script type="text/template" id="dialog">
-           <div class="b-dialog-wrapper">
-               <form>
-               <div class="b-dialog__line">
-                   <label>
-                   <span class="b-dialog__label">Имя</span>
-                   <input type="text" class="b-inp" />
-                   </label>
-                   <p class="b-dialog__line_example">Иван</p>
-               </div>
-               <div class="b-dialog__line">
-                   <label>
-                   <span class="b-dialog__label">Фамилия</span>
-                   <input type="text" class="b-inp"/>
-                   </label>
-                   <p class="b-dialog__line_example">Иван</p>
-               </div>
-               <div class="b-dialog__line">
-                   <label>
-                   <span class="b-dialog__label">Город</span>
-                   <input type="text" class="b-inp" />
-                   </label>
-                   <p class="b-dialog__line_example">Иван</p>
-               </div>
-               <div class="b-dialog__line">
-                   <label>
-                   <span class="b-dialog__label">Фото</span>
-                   <input type="text" class="b-inp"/>
-                   </label>
-                   <p class="b-dialog__line_example">Иван</p>
-               </div>
-               <div class="b-dialog__line">
-                   <label>
-                   <span class="b-dialog__label">Описание</span>
+    <div class="b-dialog-wrapper">
+        <form>
+            <div class="b-dialog__twocols">
+                <div class="b-dialog__col">
+                    <div class="b-dialog__line">
+                        <label>
+                            <span class="b-dialog__label">Имя</span>
+                            <input type="text" class="b-inp"/>
+                        </label>
+                    </div>
+                </div>
+                <div class="b-dialog__col">
+                    <div class="b-dialog__line">
+                        <label>
+                            <span class="b-dialog__label">Фамилия</span>
+                            <input type="text" class="b-inp"/>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="b-dialog__line">
+                <label>
+                    <span class="b-dialog__label">Город</span>
+                    <input type="text" class="b-inp"/>
+                </label>
+            </div>
+            <div class="b-dialog__line">
+                <label>
+                    <span class="b-dialog__label">Фото</span>
+                    <input type="text" class="b-inp"/>
+                </label>
+
+                <p class="b-dialog__line_example">Иван</p>
+            </div>
+            <div class="b-dialog__line">
+                <label>
+                    <span class="b-dialog__label">Описание</span>
                     <textarea cols="30" rows="4" class="b-inp"></textarea>
-                   </label>
-               </div>
-               <div class="b-dialog__line">
-                   <label>
-                   <span class="b-dialog__label">Вк</span>
-                   <input type="text" class="b-inp"/>
-                   </label>
-                   <p class="b-dialog__line_example">Иван</p>
-               </div>
-               <div class="b-dialog__line">
-                   <label>
-                   <span class="b-dialog__label">Фб</span>
-                   <input type="text" class="b-inp"/>
-                   </label>
-                   <p class="b-dialog__line_example">Иван</p>
-               </div>
-               <div class="b-dialog__line">
-                   <label>
-                   <span class="b-dialog__label">Гит</span>
-                   <input type="text" class="b-inp"/>
-                   </label>
-                   <p class="b-dialog__line_example">Иван</p>
-               </div>
-               <div class="b-dialog__line">
-                   <label>
-                   <span class="b-dialog__label">Яндекс</span>
-                   <input type="text" class="b-inp"/>
-                   </label>
-                   <p class="b-dialog__line_example">Иван</p>
-               </div>
-               <button class="b-button">Добавить</button>
-               </form>
-               <span class="close">×</span>
-           </div>
+                </label>
+            </div>
+            <div class="b-dialog__twocols">
+                <div class="b-dialog__col">
+                    <div class="b-dialog__line">
+                        <label>
+                            <span class="b-dialog__label">ВКонтакте</span>
+                            <input type="text" class="b-inp"/>
+                        </label>
+                    </div>
+                </div>
+                <div class="b-dialog__col">
+                    <div class="b-dialog__line">
+                        <label>
+                            <span class="b-dialog__label">Github</span>
+                            <input type="text" class="b-inp"/>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="b-dialog__twocols">
+                <div class="b-dialog__col">
+                    <div class="b-dialog__line">
+                        <label>
+                            <span class="b-dialog__label">Yandex</span>
+                            <input type="text" class="b-inp"/>
+                        </label>
+                    </div>
+                </div>
+                <div class="b-dialog__col">
+                    <div class="b-dialog__line">
+                        <label>
+                            <span class="b-dialog__label">Facebook</span>
+                            <input type="text" class="b-inp"/>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button class="b-button">Добавить</button>
+        </form>
+        <span class="close">×</span>
+    </div>
 </script>
 </body>
 </html>
