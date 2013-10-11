@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>ШРИ</title>
+    <title>Школа разработки интерфейсов</title>
     <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
@@ -45,7 +45,9 @@
             <a href="#!/students/<%=id%>"><%=first_name%> <%=last_name%></a>
         </div>
         <div class="b-student__info_city">
-            г. <%=city%>
+            <% if (city) {  %>
+                       г. <%=city%>
+            <%  } %>
         </div>
         <ul class="b-soc-links">
             <% if (link_vk) { %>
@@ -92,7 +94,11 @@
             <div class="b-page-student-big__text">
                 <h2 class="b-page-student-big__header"><%=first_name%> <%=last_name%></h2>
 
-                <div class="b-page-student-big__city">г. <%=city%></div>
+                <div class="b-page-student-big__city">
+                  <% if (city) {  %>
+                       г. <%=city%>
+                  <%  } %>
+                </div>
                 <%=about%>
                 <ul class="b-soc-links">
                     <% if (link_vk) { %>
@@ -317,7 +323,7 @@
                 </div>
                 <input type="hidden" name="id" value="<%=id%>" />
             </div>
-            <button class="b-button">Добавить</button>
+            <button class="b-button">ОК</button>
         </form>
         <span class="close">×</span>
     </div>

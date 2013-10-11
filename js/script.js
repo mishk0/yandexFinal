@@ -101,6 +101,19 @@ $(function () {
 
             }
         },
+        initialize: function() {
+            if (!this.get("first_name")) {
+            this.set({"first_name": this.defaults.first_name});
+            }
+        },
+        validate: function(attrs) {
+            if (!attrs.first_name) {
+              this.set({"first_name": this.defaults.first_name});
+            }
+            if (!attrs.link_photo) {
+              this.set({"link_photo": this.defaults.link_photo});
+            }
+  },
         clear: function () {
             this.destroy();
         }
@@ -180,7 +193,6 @@ $(function () {
             sc.each(this.addOne);
         },
         addStudent:function() {
-            debugger;
             dialog.show(function(data){
                 var model = new Student(data);
                 sc.add(model);

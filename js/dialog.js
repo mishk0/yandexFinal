@@ -25,7 +25,6 @@ $(function () {
         },
         show: function (callback, data) {
             var that = this;
-            debugger;
             this.callback = callback;
             this.el.html(that.tmpl(data));
             this.el.fadeIn();
@@ -37,9 +36,7 @@ $(function () {
             var dataForm = this.el.find("form").serializeArray();
             var dataJSON = {};
             _.each(dataForm, function(i){
-                if (i["value"]) {
                 dataJSON[i["name"]] = _.escape(i["value"]);
-                }
             });
              if (!dataJSON["id"]) {
                  dataJSON["id"] = setStId();
