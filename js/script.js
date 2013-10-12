@@ -1,5 +1,7 @@
 $(function () {
-    var sp, lp, lbp, sbp;
+    var sp, lp, lbp, sbp;   // studentsPage, lecturesPage, lecturesBigPage, studentsBigPage
+
+    // общие методы для коллекций
     var collectionsMetods = {
         filterId: function (id) {
             var arrElem = this.filter(function (item) {
@@ -189,12 +191,12 @@ $(function () {
             this.$(".b-students__list").append(view.render().el);
         },
         addAll: function () {
-            var wrapper = $("<div />");
+            var wrapper = document.createDocumentFragment();
             sc.each(function(student){
                var view = new StudentView({model: student});
-               wrapper.append(view.render().el);
+               wrapper.appendChild(view.render().el);
             });
-            this.$(".b-students__list").append(wrapper.children());
+            this.$(".b-students__list").append(wrapper);
         },
         addStudent: function () {
             dialog.show(function (data) {
@@ -283,8 +285,8 @@ $(function () {
                 return false;
             }
             var comment = {
-                name: _.escape(inp.val() || "без имени"),
-                message: _.escape(textarea.val())
+                name: inp.val() || "без имени",
+                message: textarea.val()
             }
             var comments = this.model.get("comments")
             if (comments) {

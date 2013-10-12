@@ -38,7 +38,7 @@ $(function () {
             var dataForm = this.el.find("form").serializeArray();
             var dataJSON = {};
             _.each(dataForm, function (i) {
-                dataJSON[i["name"]] = _.escape(i["value"]);
+                dataJSON[i["name"]] = i["value"];
             });
             if (!dataJSON["id"]) {
                 dataJSON["id"] = setStId();

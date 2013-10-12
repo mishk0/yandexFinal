@@ -3,30 +3,25 @@
   content: " ";
   display: table;
 }
-
 .clearfix:after {
   clear: both;
 }
-
 html,
 body {
   padding: 0;
   margin: 0;
 }
-
 ul,
 ul li {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
 .preloader {
   height: 36px;
   margin: 120px auto 0;
   text-align: center;
 }
-
 body {
   line-height: 1.2;
   font-size: 14px;
@@ -34,16 +29,13 @@ body {
   color: #555456;
   font-family: Helvetica, Arial, sans-serif;
 }
-
 a {
   color: #cc344d;
 }
-
 blockquote,
 q {
   quotes: none;
 }
-
 blockquote:before,
 blockquote:after,
 q:before,
@@ -51,12 +43,10 @@ q:after {
   content: '';
   content: none;
 }
-
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
 h1 {
   background: #FFB15C;
   position: relative;
@@ -67,7 +57,6 @@ h1 {
   line-height: 40px;
   margin-top: 0;
 }
-
 h1:before {
   content: "";
   border: 20px solid transparent;
@@ -78,13 +67,11 @@ h1:before {
   width: 0;
   height: 0;
 }
-
 .b-wrapper {
   width: 990px;
   margin: 0 auto;
   padding-top: 60px;
 }
-
 .b-header {
   background: #e3dbe7;
   position: fixed;
@@ -96,14 +83,12 @@ h1:before {
   text-align: center;
   border-bottom: 3px solid #6fbceb;
   -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
 }
-
 .transition {
-  -webkit-transition: all 0.1s;
   transition: all 0.1s;
 }
-
 .b-nav {
   display: block;
   text-align: center;
@@ -112,64 +97,52 @@ h1:before {
   margin: 0 auto;
   font-weight: bold;
 }
-
 .b-nav__link {
   display: inline-block;
   height: 40px;
   line-height: 40px;
   margin: 0 2px;
 }
-
 .b-nav__link a {
   display: block;
   height: 40px;
   padding: 0 30px;
-  -webkit-transition: all 0.1s;
   transition: all 0.1s;
 }
-
 .b-nav__link a:hover {
   background: #6fbceb;
   color: #fff;
   border-bottom: 3px solid #5589AD;
 }
-
 .b-nav__link-active a {
   background: #6fbceb;
   color: #fff;
   text-decoration: none;
 }
-
 .b-wrapper__content {
   background: #e3dbe7;
   margin-bottom: 10px;
   padding: 30px;
   min-height: 300px;
 }
-
 .b-footer {
   margin-top: 10px;
   text-align: center;
   color: #fff;
   padding-bottom: 10px;
 }
-
 .b-students__list {
   margin-left: -10px;
 }
-
 .b-students__list:before,
 .b-students__list:after {
   content: " ";
   display: table;
 }
-
 .b-students__list:after {
   clear: both;
 }
-
 .b-student {
-  -webkit-transition: all 0.1s;
   transition: all 0.1s;
   background: #DDD5E1;
   border: 2px solid #DDD5E1;
@@ -180,74 +153,62 @@ h1:before {
   padding: 10px;
   position: relative;
 }
-
 .b-student:before,
 .b-student:after {
   content: " ";
   display: table;
 }
-
 .b-student:after {
   clear: both;
 }
-
 .b-student__avatar {
   float: left;
   margin-right: 10px;
   width: 100px;
   height: 100px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
   border-radius: 50%;
   border: 5px solid #6fbceb;
   overflow: hidden;
 }
-
 .b-student__info_text {
   font-size: 20px;
   margin-bottom: 5px;
 }
-
 .b-student__info_city {
   font-size: 16px;
   margin-bottom: 10px;
 }
-
 .b-student:hover {
   border: 2px solid #6fbceb;
 }
-
 .b-student:hover .close {
   display: block;
 }
-
 .b-student__control {
   margin-bottom: 20px;
   float: right;
 }
-
 .b-soc-links:before,
 .b-soc-links:after {
   content: " ";
   display: table;
 }
-
 .b-soc-links:after {
   clear: both;
 }
-
 .b-soc-links li {
   float: left;
   margin-right: 5px;
 }
-
 .b-soc-links a {
   color: #fff;
   text-decoration: none;
   display: block;
   padding: 5px;
 }
-
 .close {
-  -webkit-transition: all 0.1s;
   transition: all 0.1s;
   display: none;
   position: absolute;
@@ -257,51 +218,40 @@ h1:before {
   font-weight: bold;
   cursor: pointer;
 }
-
 .b-soc-links__vk {
   background: #00C6F3;
 }
-
 .b-soc-links__fb {
   background: #FFB15C;
 }
-
 .b-soc-links__ya {
   background: #FF4868;
 }
-
 .b-soc-links__git {
   background: #00AAAB;
 }
-
 .link-to-all {
   margin-bottom: 20px;
 }
-
 .b-page-student-big__wrapper:before,
 .b-page-student-big__wrapper:after {
   content: " ";
   display: table;
 }
-
 .b-page-student-big__wrapper:after {
   clear: both;
 }
-
 .b-page-student-big__avatar {
   float: left;
   width: 200px;
   margin-right: 15px;
 }
-
 .b-page-student-big__avatar img {
   width: 200px;
 }
-
 .b-page-student-big__text {
   overflow: hidden;
 }
-
 .b-page-student-big__header {
   margin: 0 0 5px;
   background: #FF4868;
@@ -309,36 +259,29 @@ h1:before {
   padding: 5px;
   color: #fff;
 }
-
 .b-page-student-big__city {
   margin-bottom: 10px;
   font-size: 15px;
 }
-
 .b-page-student-big .b-soc-links {
   margin-top: 20px;
 }
-
 .b-error404 {
   font-size: 16px;
   text-align: center;
   color: #cc344d;
 }
-
 .b-error404 b {
   font-size: 95px;
   display: block;
 }
-
 .b-lecture__name {
   display: inline-block;
   margin-bottom: 5px;
 }
-
 .b-lecture__tags {
   display: inline-block;
 }
-
 .b-lecture__tags li {
   display: inline-block;
   padding: 3px 5px;
@@ -346,84 +289,66 @@ h1:before {
   margin-left: 5px;
   color: #fff;
 }
-
 .video_tag {
   background: #00C6F3;
 }
-
 .slide_tag {
   background: #00AAAB;
 }
-
 .b-page-lecture-big__wrapper {
   margin-bottom: 20px;
 }
-
 .b-page-lecture-big__wrapper:before,
 .b-page-lecture-big__wrapper:after {
   content: " ";
   display: table;
 }
-
 .b-page-lecture-big__wrapper:after {
   clear: both;
 }
-
 .b-page-lecture-big__video {
   float: left;
   background: #00C6F3;
   padding: 10px;
   margin-right: 26px;
 }
-
 .b-page-lecture-big__slides {
   float: left;
   padding: 10px;
   background: #00AAAB;
 }
-
 .b-page-lecture-big__comments_line {
   background: #DDD5E1;
   padding: 5px;
   margin-bottom: 10px;
 }
-
 .b-page-lecture-big__comments_comments-list {
   margin-bottom: 30px;
 }
-
 .b-page-lecture-big__comments-author {
   font-weight: bold;
 }
-
 .b-page-lecture-big__comments-author:first-letter {
   color: #f00;
 }
-
 .b-page-lecture-big__commentsForm_line {
   margin-bottom: 10px;
 }
-
 .b-inp {
   width: 100%;
   resize: none;
   display: block;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 5px 10px;
   border: 3px solid #00C6F3;
   font-size: 16px;
 }
-
 .b-inp:focus {
   outline: none;
 }
-
 textarea.error {
   border-color: #f00;
 }
-
 .b-button {
   padding: 10px 20px;
   cursor: pointer;
@@ -434,7 +359,6 @@ textarea.error {
   font-size: 16px;
   border: none;
 }
-
 .b-dialog {
   display: none;
   position: fixed;
@@ -446,7 +370,6 @@ textarea.error {
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
 }
-
 .b-dialog-wrapper {
   padding: 20px;
   margin: 0 auto;
@@ -454,46 +377,39 @@ textarea.error {
   width: 400px;
   background: #fff;
 }
-
 .b-dialog__twocols {
   margin-left: -20px;
 }
-
 .b-dialog__twocols:before,
 .b-dialog__twocols:after {
   content: " ";
   display: table;
 }
-
 .b-dialog__twocols:after {
   clear: both;
 }
-
 .b-dialog__col {
   float: left;
   width: 190px;
   margin-left: 20px;
 }
-
 .b-dialog .close {
   display: block;
 }
-
 .b-dialog__line {
   margin-bottom: 10px;
 }
-
 .b-dialog__line_example {
   font-size: 11px;
   color: #666;
   margin: 3px 0 0;
 }
-
 .b-dialog__label {
   display: block;
 }
-
 .b-twitter {
   float: right;
   margin: 0 0 10px 20px;
+  width: 300px;
+  height: 400px;
 }
