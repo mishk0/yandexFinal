@@ -22,13 +22,9 @@ ul li {
 }
 
 .preloader {
-  width: 40px;
   height: 36px;
-  background: #fff;
   margin: 120px auto 0;
   text-align: center;
-  border-radius: 5px;
-  padding-top: 4px;
 }
 
 body {
@@ -112,6 +108,8 @@ h1:before {
   display: block;
   text-align: center;
   text-transform: uppercase;
+  width: 990px;
+  margin: 0 auto;
   font-weight: bold;
 }
 
@@ -493,4 +491,9 @@ textarea.error {
 
 .b-dialog__label {
   display: block;
+}
+
+.b-twitter {
+  float: right;
+  margin: 0 0 10px 20px;
 }

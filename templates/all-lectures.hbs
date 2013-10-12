@@ -1,0 +1,24 @@
+<div class="b-page-lectures">
+        <h1>ЛЕКЦИИ</h1>
+
+        <div class="b-lectures__list">
+            <ol class="b-lecture">
+                {{#each lectures}}
+                <li>
+                    <h3 class="b-lecture__name"><a href="#!/lectures/{{id}}">{{name}}</a></h3>
+                    <ul class="b-lecture__tags">
+                        {{#if video_url}}
+                        <li class="video_tag">видео</li>
+                        {{/if}}
+                        {{#if slides_url}}
+                        <li class="slide_tag">слайды</li>
+                        {{/if}}
+                    </ul>
+                    <div class="b-lecture__lector-name">{{lector_name}}</div>
+                </li>
+
+               {{/each}}
+            </ol>
+        </div>
+    </div>
+    </div>

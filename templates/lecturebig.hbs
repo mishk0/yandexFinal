@@ -1,0 +1,34 @@
+<div class="b-page-lecture-big">
+        <div class="link-to-all">
+            <a href="#!/lectures">&larr; все лекции</a>
+        </div>
+        <h1>{{name}}</h1>
+
+        <div class="b-page-lecture-big__wrapper">
+            {{#if video_url}}
+            <div class="b-page-lecture-big__video">
+                <iframe src="{{video_url}}" frameborder="0" width="515" height="290"></iframe>
+            </div>
+            {{/if}}
+            {{#if slides_url}}
+            <div class="b-page-lecture-big__slides">
+                <iframe src="{{slides_url}}" frameborder="0" width="348" height="290"></iframe>
+            </div>
+            {{/if}}
+        </div>
+        <h3>Комментарии</h3>
+
+        <div class="b-page-lecture-big__comments">
+        </div>
+        <form class="b-page-lecture-big__commentsForm">
+            <div class="b-page-lecture-big__commentsForm_line">
+                <input type="text" name="name" class="b-inp" placeholder="введите имя"/>
+            </div>
+            <div class="b-page-lecture-big__commentsForm_line">
+                <textarea cols="30" rows="10" name="text" class="b-inp" placeholder="введите сообщение"></textarea>
+            </div>
+            <button class="b-button">
+                отправить
+            </button>
+        </form>
+    </div>

@@ -1,0 +1,38 @@
+<div class="b-page-student-big">
+        <div class="b-student__control">
+            <span class="b-button editStudent">Править</span>
+        </div>
+        <div class="link-to-all">
+            <a href="#!/students">&larr; все студенты</a>
+        </div>
+        <div class="b-page-student-big__wrapper">
+            <div class="b-page-student-big__avatar">
+                <a href="{{link_photo}}" target="_blank"><img src="{{link_photo}}" alt=""/></a>
+            </div>
+            <div class="b-page-student-big__text">
+                <h2 class="b-page-student-big__header">{{first_name}} {{last_name}}</h2>
+
+                <div class="b-page-student-big__city">
+                    {{#if city}}
+                    г. {{city}}
+                    {{/if}}
+                </div>
+                {{about}}
+                <ul class="b-soc-links">
+                    {{#if link_vk}}
+                    <li class="b-soc-links__vk"><a href="{{link_vk}}" target="_blank">VK</a></li>
+                    {{/if}}
+                    {{#if link_gihub}}
+                    <li class="b-soc-links__git"><a href="{{link_gihub}}" target="_blank">git</a></li>
+                    {{/if}}
+                    {{#if link_facebook}}
+                    <li class="b-soc-links__fb"><a href="{{link_facebook}}" target="_blank">fb</a></li>
+                    {{/if}}
+                    {{#if link_yaru}}
+                    <li class="b-soc-links__ya"><a href="{{link_yaru}}" target="_blank">yandex</a></li>
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+
+    </div>

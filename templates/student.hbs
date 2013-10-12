@@ -1,0 +1,28 @@
+<div class="b-student__avatar">
+        <img src="{{link_photo}}" width="100" alt=""/>
+    </div>
+    <div class="b-student__info">
+        <div class="b-student__info_text">
+            <a href="#!/students/{{id}}">{{first_name}} {{last_name}}</a>
+        </div>
+        <div class="b-student__info_city">
+            {{#if city}}
+            г. {{city}}
+            {{/if}}
+        </div>
+        <ul class="b-soc-links">
+            {{#if link_vk}}
+            <li class="b-soc-links__vk"><a href="{{link_vk}}" target="_blank">VK</a></li>
+            {{/if}}
+            {{#if link_gihub}}
+            <li class="b-soc-links__git"><a href="{{link_gihub}}" target="_blank">git</a></li>
+            {{/if}}
+            {{#if link_facebook}}
+            <li class="b-soc-links__fb"><a href="{{link_facebook}}" target="_blank">fb</a></li>
+            {{/if}}
+            {{#if link_yaru}}
+            <li class="b-soc-links__ya"><a href="{{link_yaru}}" target="_blank">yandex</a></li>
+            {{/if}}
+        </ul>
+    </div>
+    <span class="close">×</span>
