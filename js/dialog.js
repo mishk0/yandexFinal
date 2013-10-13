@@ -1,6 +1,11 @@
 define("dialog",["backbone","templates", "common"],
     function(Backbone, templates, common) {
         "use strict";
+        /**
+         * Создает экземпляр диалога добавления или редактирования студента
+         * @name Dialog
+         * @constructor.
+         */
     function Dialog() {
         this.init();
     }
@@ -27,6 +32,12 @@ define("dialog",["backbone","templates", "common"],
                 }
             })
         },
+        /**
+         * Показ диалога
+         * @name Dialog
+         * @param callback функция вызываемая при отправке формы.
+         * @param {object} data данные для формы.
+         */
         show: function (callback, data) {
             var that = this;
             this.callback = callback;

@@ -1,6 +1,10 @@
 define("StudentsPage",["backbone", "sc", "templates", "StudentView", "modelJson", "dialog", "common", "Student"],
     function(Backbone, sc, templates, StudentView, modelJson, dialog, common, Student) {
         "use strict";
+        /**
+         * Создает экземпляр представления списка студентов
+         * @constructor.
+         */
         return Backbone.View.extend({
         el: $(".b-wrapper"),
         templates: templates["all-students"],
@@ -16,7 +20,7 @@ define("StudentsPage",["backbone", "sc", "templates", "StudentView", "modelJson"
                 success: function () {
                     if (!sc.models.length) {
                         sc.reset(modelJson.students);
-                        _.each(sc.models, function (i) {         // todo optimize
+                        _.each(sc.models, function (i) {
                             i.save();
                         })
                     }

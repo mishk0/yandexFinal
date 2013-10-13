@@ -1,6 +1,10 @@
 define("LecturesPage",["backbone", "lc", "templates", "modelJson"],
     function(Backbone, lc,templates, modelJson) {
         "use strict";
+        /**
+         * Создает экземпляр представления списка лекций
+         * @constructor.
+         */
         return Backbone.View.extend({
         el: $(".b-wrapper"),
         templates: templates["all-lectures"],
@@ -10,7 +14,7 @@ define("LecturesPage",["backbone", "lc", "templates", "modelJson"],
                 success: function () {
                     if (!lc.models.length) {
                         lc.reset(modelJson.lectures);
-                        _.each(lc.models, function (i) {         // todo optimize
+                        _.each(lc.models, function (i) {
                             i.save();
                         })
                     }

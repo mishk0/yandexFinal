@@ -1,6 +1,10 @@
 define("LectureBigPage",["backbone","jquery", "templates"],
     function(Backbone,$, templates) {
         "use strict";
+        /**
+         * Создает экземпляр представления подробной страницы лекции
+         * @constructor.
+         */
         return Backbone.View.extend({
         el: $(".b-wrapper"),
         templates: {

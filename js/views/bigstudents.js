@@ -1,6 +1,10 @@
 define("StudentsBigPage",["backbone","jquery", "templates", "dialog"],
     function(Backbone,$,templates, dialog) {
         "use strict";
+        /**
+         * Создает экземпляр представления подробной страницы студента
+         * @constructor.
+         */
         return Backbone.View.extend({
         el: $(".b-wrapper"),
         templates: templates["studentbig"],

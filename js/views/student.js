@@ -1,6 +1,10 @@
 define("StudentView",["backbone","jquery", "templates"],
     function(Backbone,$,templates) {
         "use strict";
+        /**
+         * Создает экземпляр представления студента
+         * @constructor.
+         */
         return Backbone.View.extend({
         tagName: "div",
         className: "b-student",

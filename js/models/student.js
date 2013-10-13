@@ -1,6 +1,10 @@
 define("Student",["backbone"],
     function(Backbone) {
         "use strict";
+        /**
+         * Создает экземпляр модели студента
+         * @constructor
+         */
         return Backbone.Model.extend({
         defaults: {
             first_name: "noname",
