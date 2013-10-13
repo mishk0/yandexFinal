@@ -42,6 +42,10 @@ body {
 
 a {
   color: @c2;
+  .transition;
+  &:hover {
+    color:#7E1B2B;
+  }
 }
 
 blockquote, q {
@@ -355,6 +359,7 @@ textarea.error {
 }
 .b-button {
   padding: 10px 20px;
+  .transition;
   cursor:pointer;
   display: inline-block;
   color:#fff;
@@ -362,6 +367,12 @@ textarea.error {
   background: #00C6F3;
   font-size: 16px;
   border: none;
+  &:hover {
+    background: lighten(#00C6F3, 1%);
+  }
+  &:focus {
+    outline:none;
+  }
 }
 
 .b-dialog {
@@ -412,4 +423,20 @@ textarea.error {
   margin: 0 0 10px 20px;
   width: 300px;
   height: 400px;
+}
+
+@media all and (max-width : 990px) {
+   .b-wrapper, .b-nav {
+     width: auto;
+     min-width: 600px;
+   }
+  .b-student {
+    width: auto;
+    display: block;
+    float: none;
+  }
+  .b-page-lecture-big__video {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
 }

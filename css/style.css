@@ -37,6 +37,12 @@ body {
 
 a {
   color: #cc344d;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+a:hover {
+  color: #7E1B2B;
 }
 
 blockquote,
@@ -426,6 +432,8 @@ textarea.error {
 
 .b-button {
   padding: 10px 20px;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
   cursor: pointer;
   display: inline-block;
   color: #fff;
@@ -433,6 +441,14 @@ textarea.error {
   background: #00C6F3;
   font-size: 16px;
   border: none;
+}
+
+.b-button:hover {
+  background: #00caf8;
+}
+
+.b-button:focus {
+  outline: none;
 }
 
 .b-dialog {
@@ -498,4 +514,23 @@ textarea.error {
   margin: 0 0 10px 20px;
   width: 300px;
   height: 400px;
+}
+
+@media all and (max-width: 990px) {
+  .b-wrapper,
+  .b-nav {
+    width: auto;
+    min-width: 600px;
+  }
+
+  .b-student {
+    width: auto;
+    display: block;
+    float: none;
+  }
+
+  .b-page-lecture-big__video {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
 }
