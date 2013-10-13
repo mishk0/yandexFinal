@@ -27,7 +27,15 @@ autoprefixer: {
       dest: 'css/style.css'
     }
   },
-    
+  uglify: {
+        files: { 
+            src: 'js/**/*.js', 
+            dest: '',
+            expand: true,
+            flatten: false, 
+            ext: '.js'
+        }
+    },  
     concat: {},
 
     watch: {
@@ -61,6 +69,7 @@ handlebars: {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-contrib-handlebars');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   
   grunt.registerTask('default', ['less']);
 };
