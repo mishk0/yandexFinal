@@ -1,4 +1,6 @@
-$(function () {
+define("dialog",["backbone","templates", "common"],
+    function(Backbone, templates, common) {
+        "use strict";
     function Dialog() {
         this.init();
     }
@@ -41,7 +43,7 @@ $(function () {
                 dataJSON[i["name"]] = i["value"];
             });
             if (!dataJSON["id"]) {
-                dataJSON["id"] = setStId();
+                dataJSON["id"] = common.setStudentsIds();
             }
             if (this.callback) {
                 this.callback(dataJSON);
@@ -50,7 +52,6 @@ $(function () {
         }
 
     }
-    window.dialog = new Dialog();
-})
 
-
+return new Dialog();
+});

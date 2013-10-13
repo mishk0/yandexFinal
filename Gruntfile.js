@@ -40,6 +40,8 @@ handlebars: {
                         'js/templates.js': "templates/*.hbs"
                     },
                     options: {
+                        wrapped: true,
+                        amd: true,
                         namespace: 'templates',
                         processName: function(filePath) {
                             var parts = filePath.split('/');
