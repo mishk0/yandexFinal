@@ -177,6 +177,7 @@ h1:before {
 .b-student {
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+  height: 110px;
   background: #DDD5E1;
   border: 2px solid #DDD5E1;
   margin-bottom: 10px;
